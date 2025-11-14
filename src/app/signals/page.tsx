@@ -1,4 +1,5 @@
 'use client';
+import { useEffect } from 'react';
 import Header from '@/components/Header';
 import { motion } from 'framer-motion';
 
@@ -11,17 +12,32 @@ const paragraphs = [
 ];
 
 export default function Signals() {
+  useEffect(() => {
+    // Load Tally script
+    const script = document.createElement('script');
+    script.innerHTML = `var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}`;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
-    <div className="relative flex flex-col items-center min-h-screen w-full bg-[#0a0a0a] overflow-hidden">
+    <div className="relative flex flex-col items-center min-h-screen w-full bg-[#141414] overflow-hidden">
       <Header />
 
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a] pointer-events-none" />
+      {/* Warm gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1a1816] via-[#141414] to-[#161412] opacity-60 pointer-events-none" />
 
-      {/* Subtle noise texture */}
-      <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }} />
+      {/* Subtle vignette */}
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/20 pointer-events-none" />
 
-      <main className="relative flex-1 w-full pt-32 pb-20 px-6 sm:px-10 md:px-16">
+      {/* Fine grain texture */}
+      <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")', backgroundRepeat: 'repeat' }} />
+
+      <main className="relative flex-1 w-full pt-32 pb-24 px-6 sm:px-10 md:px-16">
         {/* Content */}
         <motion.article
           className="relative z-10 w-full max-w-4xl mx-auto"
@@ -30,44 +46,57 @@ export default function Signals() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Title Section */}
-          <div className="text-center mb-12">
+          <div className="text-left mb-12">
             <motion.h1
-              className="font-serif font-medium text-[48px] sm:text-[56px] md:text-[64px] leading-none tracking-tight text-white mb-3"
+              className="font-mono font-normal text-center text-[28px] sm:text-[32px] md:text-[36px] leading-tight tracking-tight text-white/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
               SIGNALS
             </motion.h1>
-            <motion.p
-              className="font-sans text-[20px] sm:text-[22px] md:text-[24px] text-white/50 tracking-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Making the Work Visible
-            </motion.p>
           </div>
 
-          {/* Body Content */}
+          {/* Content Container with subtle border */}
           <motion.div
-            className="space-y-7 max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto space-y-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            {paragraphs.map((text, index) => (
-              <motion.p
-                key={index}
-                style={{ textAlignLast: "center"}}
-                className={`font-mono font-thin text-[15px] sm:text-[16px] md:text-[17px] leading-[1.8] text-white/80 tracking-tighter text-justify  ${index === paragraphs.length - 1 ? 'pt-3' : ''}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
-              >
-                {text}
-              </motion.p>
-            ))}
+            {/* Text Content */}
+            <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-8 sm:p-10 md:p-12 backdrop-blur-sm">
+              <div className="space-y-8">
+                {paragraphs.map((text, index) => (
+                  <motion.p
+                    key={index}
+                    style={{ textAlignLast: "left" }}
+                    className={`font-mono font-light text-[15px] sm:text-[16px] md:text-[17px] leading-[1.9] text-white/75 tracking-tight text-justify ${index === paragraphs.length - 1 ? 'pt-2' : ''}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 + (index * 0.1), ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    {text}
+                  </motion.p>
+                ))}
+              </div>
+            </div>
+
+            {/* Form Container */}
+            <motion.div
+              className="bg-white/[0.02] border border-white/[0.05] rounded-2xl backdrop-blur-sm p-6 sm:p-8 md:p-10 h-max"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <iframe
+                data-tally-src="https://tally.so/embed/LZZ9qv?alignLeft=1&hideTitle=1&transparentBackground=1"
+                width="100%"
+                height="893"
+                title="SIGNALS Application Form"
+                style={{ border: 'none' }}
+              />
+            </motion.div>
           </motion.div>
         </motion.article>
       </main>
