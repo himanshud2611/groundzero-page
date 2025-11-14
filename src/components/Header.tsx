@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const navItems = [
   { label: 'Blogs', href: '/blogs' },
@@ -15,19 +16,19 @@ export default function Header() {
       <nav className="flex items-center justify-center gap-10 p-2.5">
         <div className="flex items-start gap-14">
           <div className="flex items-center justify-center gap-2.5">
-            <div className="relative w-8 h-8">
+            <Link href="/" className="relative w-8 h-8">
               <Image
                 src="/logo.svg"
                 alt="Ground Zero Logo"
                 fill
                 className="object-contain"
               />
-            </div>
+            </Link>
           </div>
         </div>
 
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.label}
             href={item.href}
             className="relative flex items-center justify-center gap-2.5 font-mono text-md text-white/85 tracking-tighter font-thin pb-1 group"
@@ -44,7 +45,7 @@ export default function Header() {
 
             {/* Subtle glow behind text */}
             <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 rounded-sm blur-sm -z-10 transition-all duration-200" />
-          </a>
+          </Link>
         ))}
       </nav>
     </header>
