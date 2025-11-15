@@ -16,7 +16,7 @@ export default function Header() {
       <nav className="flex items-center justify-center gap-10 p-2.5">
         <div className="flex items-start gap-14">
           <div className="flex items-center justify-center gap-2.5">
-            <Link href="/" className="relative w-8 h-8">
+            <Link href="/" className="relative size-7">
               <Image
                 src="/logo.svg"
                 alt="Ground Zero Logo"
