@@ -12,29 +12,25 @@ const navItems = [
 
 export default function Header() {
   return (
-    <header className="absolute left-0 top-0 w-full h-[90px] md:h-[90px] flex items-center justify-center md:justify-center px-[18px] md:px-16 py-3 md:py-6 z-10">
-      <nav className="w-full flex items-center justify-between md:justify-center md:gap-10 p-2.5">
-        <div className="flex items-start gap-14">
-          <div className="flex items-center justify-center gap-2.5">
-            <Link href="/" className="relative size-6 md:size-7">
-              <Image
-                src="/logo.svg"
-                alt="Ground Zero Logo"
-                fill
-                className="object-contain"
-              />
-            </Link>
-          </div>
-        </div>
+    <header className="absolute left-0 top-0 w-full h-20 md:h-[90px] flex items-center px-[18px] md:px-16 py-3 md:py-6 z-10">
+      <nav className="w-full flex items-center justify-between md:justify-center md:gap-10 p-1.5">
+        <Link href="/" className="relative size-7 md:size-8 shrink-0">
+          <Image
+            src="/logo.svg"
+            alt="Ground Zero Logo"
+            fill
+            className="object-contain"
+          />
+        </Link>
 
-        <div className="flex items-center gap-[18px] md:hidden">
+        <div className="flex items-center gap-4 md:hidden overflow-x-auto whitespace-nowrap pl-4 pr-1 py-1">
           {navItems.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className="relative flex items-center justify-center gap-2.5 font-mono text-[14px] text-white/85 tracking-[-0.7px] font-medium pb-1"
+              className="relative font-mono text-[13px] text-white/85 tracking-[-0.5px] font-medium"
             >
-              <span>{item.label}</span>
+              {item.label}
             </Link>
           ))}
         </div>
