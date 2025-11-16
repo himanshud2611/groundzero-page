@@ -1,33 +1,43 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import AnimatedSignalsLogo from "@/components/AnimatedSignalsLogo";
 
 const paragraphs = [
-    { text: "I've been thinking about what work looks like post-AGI. I guess it will feel less like grinding and more like choosing the problems that actually matter to you and a cross-section of world. The thing is - researchers and builders are already living this. They're shipping experimental models, breaking paradigms, building tools that change how we work." },
-    { text: "But here's what keeps me up: the pace is insane. So much incredible work either gets lost in feeds, never leaves the lab, or just... disappears. The people doing the most interesting things often don't have the bandwidth or platform to show what they're actually building. And that sucks." },
+    {
+        text: "I've been thinking about what work looks like post-AGI. I guess it will feel less like grinding and more like choosing the problems that actually matter to you and a cross-section of world. The thing is - researchers and builders are already living this. They're shipping experimental models, breaking paradigms, building tools that change how we work.",
+    },
+    {
+        text: "But here's what keeps me up: the pace is insane. So much incredible work either gets lost in feeds, never leaves the lab, or just... disappears. The people doing the most interesting things often don't have the bandwidth or platform to show what they're actually building. And that sucks.",
+    },
     {
         text: "So we're building ",
         highlight: true,
-        continuation: " on Ground Zero. It's pretty simple - an open platform for two groups: researchers and builders creating novel work, and founders shipping products that matter. The idea is to give you a space to show the real stuff. Not the polished launch video. Not the marketing deck. The messy parts. The pivots. The \"we tried this and it broke so we did that instead\" moments. The technical tradeoffs nobody talks about because they're too in the weeds."
+        continuation:
+            " on Ground Zero. It's pretty simple - an open platform for two groups: researchers and builders creating novel work, and founders shipping products that matter. The idea is to give you a space to show the real stuff. Not the polished launch video. Not the marketing deck. The messy parts. The pivots. The \"we tried this and it broke so we did that instead\" moments. The technical tradeoffs nobody talks about because they're too in the weeds.",
     },
-    { text: "You keep full ownership of everything. We're here to help more people see what you're doing. Publish a video content on Ground Zero Youtube. We'll help with writings if you want it, feature your work on the Ground Zero page, push it through networks that actually care, and connect you with people working on adjacent problems. The goal is exposure to people who get it, organic connections, and a place where experimental work doesn't get lost." },
-    { text: "If you're building something real and want to showcase to the community, we are here to give you an open platform." },
+    {
+        text: "You keep full ownership of everything. We're here to help more people see what you're doing. Publish a video content on Ground Zero Youtube. We'll help with writings if you want it, feature your work on the Ground Zero page, push it through networks that actually care, and connect you with people working on adjacent problems. The goal is exposure to people who get it, organic connections, and a place where experimental work doesn't get lost.",
+    },
+    {
+        text: "If you're building something real and want to showcase to the community, we are here to give you an open platform.",
+    },
 ];
 
 export default function Signals() {
     useEffect(() => {
-      // Load Tally script
-      const script = document.createElement('script');
-      script.innerHTML = `var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}`;
-      document.body.appendChild(script);
+        // Load Tally script
+        const script = document.createElement("script");
+        script.innerHTML = `var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}`;
+        document.body.appendChild(script);
 
-      return () => {
-        // Cleanup script on unmount
-        document.body.removeChild(script);
-      };
+        return () => {
+            // Cleanup script on unmount
+            document.body.removeChild(script);
+        };
     }, []);
 
     return (
@@ -76,11 +86,8 @@ export default function Signals() {
                                 ease: [0.16, 1, 0.3, 1],
                             }}
                         >
-                            <Image
-                                src="/signals-logo.svg"
-                                alt="Signals"
-                                width={48}
-                                height={48}
+                            <AnimatedSignalsLogo
+                                size={48}
                                 className="shrink-0"
                             />
                             <h1 className="font-mono font-normal text-[40px] leading-none tracking-[-0.4px] text-white">
@@ -153,12 +160,21 @@ export default function Signals() {
                                 >
                                     @himanshustwts
                                 </a>
+                                <br /><br />
+                                <a
+                                    href="#signals-form"
+                                    className="gap-2 w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors"
+                                >
+                                    Share your signal ↴
+                                </a>
                             </p>
                         </div>
 
-
                         {/* Form Container */}
-                        <div className="bg-white/5 px-5 md:px-8 py-8 md:py-10">
+                        <div
+                            id="signals-form"
+                            className="bg-white/5 px-5 md:px-8 "
+                        >
                             {/* <div className="flex justify-start mb-6">
                                 <Image
                                     src="/signals-logo.svg"
