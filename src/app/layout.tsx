@@ -15,8 +15,13 @@ const chivoMono = Chivo_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ground Zero - AI & Tech Insights",
+  title: "Ground Zero - Shaping the Frontier",
   description: "Exploring the ideas and breakthroughs shaping the future of AI and tech",
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

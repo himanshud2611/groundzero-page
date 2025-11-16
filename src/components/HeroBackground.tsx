@@ -13,20 +13,6 @@ export default function HeroBackground() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const [isIOSWebKit, setIsIOSWebKit] = React.useState(false);
-
-  React.useEffect(() => {
-    // iOS Safari refuses to paint the layer when a CSS url() SVG filter uses feTurbulence,
-    // so detect it and swap in a safer fallback instead.
-    if (typeof navigator === 'undefined') return;
-    const ua = navigator.userAgent;
-    const isIOSDevice = /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
-    const isWebKit = /WebKit/.test(ua);
-    const isNotChrome = !/CriOS/.test(ua);
-    const isNotFirefox = !/FxiOS/.test(ua);
-    setIsIOSWebKit(isIOSDevice && isWebKit && isNotChrome && isNotFirefox);
-  }, []);
-
   const springConfig = { damping: 25, stiffness: 100 };
   const cloudLeftX = useSpring(mouseX, springConfig);
   const cloudLeftY = useSpring(mouseY, springConfig);
@@ -78,7 +64,7 @@ export default function HeroBackground() {
       {/* Background with gradient and images */}
       <div
         className="absolute inset-0 bg-linear-to-b from-[#bf635c] via-[#e79c7f] via-60% to-[#fcf7d9] overflow-hidden"
-        style={{ filter: isIOSWebKit ? 'none' : 'url(#figmaNoiseFilter)', WebkitFilter: isIOSWebKit ? 'none' : 'url(#figmaNoiseFilter)' }}
+        style={{ filter: 'url(#figmaNoiseFilter)', WebkitFilter: 'url(#figmaNoiseFilter)' }}
       >
         {/* Cloud images - centered with creative parallax */}
         <motion.div
@@ -142,17 +128,6 @@ export default function HeroBackground() {
             }}
           />
         ))}
-
-        {isIOSWebKit && (
-          <div
-            className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay"
-            style={{
-              backgroundImage:
-                'repeating-linear-gradient(0deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 1px, transparent 1px, transparent 3px), repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px)'
-            }}
-            aria-hidden="true"
-          />
-        )}
       </div>
     </div>
   );

@@ -10,7 +10,10 @@ export default function Home() {
     <div className="relative flex flex-col items-center min-h-screen w-full bg-white overflow-hidden">
       <Header />
 
-      <main className="relative flex-1 flex items-center justify-center w-full overflow-hidden">
+      <main
+        className="relative flex-1 flex items-center justify-center w-full overflow-hidden"
+        style={{ background: 'linear-gradient(180deg, #bf635c 0%, #e79c7f 60%, #fcf7d9 100%)' }}
+      >
         <HeroBackground />
 
         {/* Hero content */}
