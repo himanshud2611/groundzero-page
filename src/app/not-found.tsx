@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Header from '@/components/Header';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
@@ -113,7 +112,7 @@ export default function NotFound() {
           {meteorTimings.map((timing, i) => (
             <motion.div
               key={i}
-              className="absolute w-[2px] h-[60px] bg-gradient-to-b from-white/60 to-transparent rounded-full"
+              className="absolute w-0.5 h-[60px] bg-linear-to-b from-white/60 to-transparent rounded-full"
               style={{
                 left: `${10 + i * 12}%`,
                 top: `-10%`,
@@ -140,7 +139,7 @@ export default function NotFound() {
           <div className="flex flex-col items-center justify-center gap-3 md:gap-4 opacity-50">
             {/* 404 Number */}
             <motion.div
-              className="font-mono text-[140px] sm:text-[180px] md:text-[240px] leading-none tracking-tight font-bold bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent opacity-60"
+              className="font-mono text-[140px] sm:text-[180px] md:text-[240px] leading-none tracking-tight font-bold bg-linear-to-b from-white to-white/40 bg-clip-text text-transparent opacity-60"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 0.6, y: 0 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
