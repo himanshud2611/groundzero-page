@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Copy, Check } from 'lucide-react';
 import Image from 'next/image';
@@ -229,6 +230,7 @@ export default function Partner() {
           </motion.div>
         </motion.article>
       </main>
+      <Footer />
     </div>
   );
 }
