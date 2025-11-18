@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import AnimatedSignalsLogo from "@/components/AnimatedSignalsLogo";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import type { ReactNode } from "react";
 
 const sessionStructure = [
   "We are structuring the sessions for an hour (we can add ~20mins, if you feel the need while shooting/recording)",
@@ -23,11 +25,6 @@ const recordingTips = [
   "Share your raw file with us - we will create a teaser video, do basic editing if needed and will post on GroundZero YT. The distribution and amplification of groundzero and our shared network will make it reach to wide audience.",
 ];
 
-const spotlightHighlights = [
-  "Research paper breakdowns — a section on groundzeroai.in",
-  '"Open problems" section',
-];
-
 const resourceSections = [
   {
     title: "Dedicated researcher pages on the Ground Zero site",
@@ -40,6 +37,7 @@ const resourceSections = [
     title: "Written deep-dives/blog posts",
     points: [
       "Extract key insights from video into a written article on Ground Zero",
+      "Research paper breakdowns published on groundzeroai.in to extend long-form reach",
       "You or someone on your team writes it, review and publish",
       "Different format reaches different audience (some people prefer reading)",
     ],
@@ -57,6 +55,7 @@ const resourceSections = [
     points: [
       'If you mention tools, papers, code repos in session - compiling those into a "resources from this episode" section',
       "Makes it immediately useful.",
+      "We collect \"Open problems\" callouts from your episode so the community can riff and respond",
     ],
   },
   {
@@ -67,6 +66,18 @@ const resourceSections = [
     ],
   },
 ];
+
+const ExternalLink = ({ href, children }: { href: string; children: ReactNode }) => (
+  <a
+    className="inline-flex items-center gap-1 text-[#8fb3d6] hover:text-white transition-colors"
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+  >
+    <span>{children}</span>
+    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+  </a>
+);
 
 export default function ResearchersSignalsPage() {
   return (
@@ -129,20 +140,22 @@ export default function ResearchersSignalsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="space-y-12">
-              <section className="space-y-4 border-l border-white/15 pl-6">
+            <div className="space-y-14">
+              <section className="space-y-5 border-l border-white/15 pl-6">
                 <p className="text-white font-serif text-[26px] tracking-tight leading-tight">
                   Ground Zero | SIGNALS.
                 </p>
-                <p className="text-white font-serif text-[20px]">
+                <p className="text-[#f7cfa2] font-serif text-[20px]">
                   <strong>For researchers and hackers</strong>
                 </p>
-                <p className="font-mono text-white/75 text-[14px] md:text-[16px] leading-relaxed">
-                  Hi. Welcome to SIGNALS. I really appreciate your presence here and we are looking forward to coming with high signal and tasteful content about the absolutely amazing work you have done and been doing.
-                </p>
-                <p className="font-mono text-white/75 text-[14px] md:text-[16px] leading-relaxed">
-                  This doc serves as the reference of the process about how we are approaching SIGNALS for researchers and how everyone can make the most out of it. This is a kind of raw draft for content guidelines.
-                </p>
+                <div className="space-y-3 max-w-2xl">
+                  <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
+                    Hi. Welcome to SIGNALS. I really appreciate your presence here and we are looking forward to coming with high signal and tasteful content about the absolutely amazing work you have done and been doing.
+                  </p>
+                  <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
+                    This doc serves as the reference of the process about how we are approaching SIGNALS for researchers and how everyone can make the most out of it. This is a kind of raw draft for content guidelines.
+                  </p>
+                </div>
               </section>
 
               <div className="h-px bg-white/10" />
@@ -153,10 +166,10 @@ export default function ResearchersSignalsPage() {
                   {sessionStructure.map((item) => (
                     <li
                       key={item}
-                      className="font-mono text-white/78 text-[14px] md:text-[16px] leading-relaxed flex gap-3"
+                      className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7 flex gap-3"
                     >
                       <span className="text-white/50 mt-1">•</span>
-                      <span>{item}</span>
+                      <span className="max-w-3xl text-white/85">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -168,26 +181,13 @@ export default function ResearchersSignalsPage() {
                   {recordingTips.map((tip) => (
                     <li
                       key={tip}
-                      className="font-mono text-white/78 text-[14px] md:text-[16px] leading-relaxed flex gap-3"
+                      className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7 flex gap-3"
                     >
                       <span className="text-white/50 mt-1">•</span>
-                      <span>{tip}</span>
+                      <span className="max-w-3xl text-white/85">{tip}</span>
                     </li>
                   ))}
                 </ul>
-              </section>
-
-              <div className="h-px bg-white/10" />
-
-              <section className="grid gap-3">
-                {spotlightHighlights.map((text) => (
-                  <div
-                    key={text}
-                    className="px-5 py-3 border border-white/12 bg-white/5 text-white/90 font-mono text-[14px] md:text-[16px] leading-relaxed"
-                  >
-                    <span className="text-[#f7cfa2]">{text}</span>
-                  </div>
-                ))}
               </section>
 
               <div className="h-px bg-white/10" />
@@ -204,10 +204,10 @@ export default function ResearchersSignalsPage() {
                     {points.map((point) => (
                       <li
                         key={point}
-                        className="font-mono text-white/78 text-[14px] md:text-[16px] leading-relaxed flex gap-3"
+                        className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7 flex gap-3"
                       >
                         <span className="text-white/50 mt-1">•</span>
-                        <span>
+                        <span className="max-w-3xl text-white/85">
                           {point.includes("\"resources from this episode\"") ? (
                             <>
                               If you mention tools, papers, code repos in session - compiling those into a &quot;
@@ -226,19 +226,22 @@ export default function ResearchersSignalsPage() {
 
               <div className="h-px bg-white/10" />
 
-              <section className="space-y-4 border-l border-white/15 pl-6">
-                <p className="font-mono text-white/78 text-[14px] md:text-[16px] leading-relaxed">
+              <section className="space-y-5 border-l border-white/15 pl-6">
+                <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
                   These are some pointers we are coming up with and beyond excited to host you.
                 </p>
-                <p className="font-mono text-white/78 text-[14px] md:text-[16px] leading-relaxed">
-                  Got any questions or anything to discuss?
+                <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
+                  Got any questions or anything to discuss? Reach out anytime:
                 </p>
-                <p className="font-mono text-white/78 text-[14px] md:text-[16px] leading-relaxed">
-                  DM me <a className="text-[#8fb3d6] hover:text-white transition-colors" href="https://x.com/himanshustwts" target="_blank" rel="noreferrer">https://x.com/himanshustwts</a> or
-                  <br />
-                  Isha (Community Lead) <a className="text-[#8fb3d6] hover:text-white transition-colors" href="https://x.com/slowdownisha" target="_blank" rel="noreferrer">https://x.com/slowdownisha</a>
-                </p>
-                <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-relaxed bg-white/5 border border-white/10 px-5 py-4">
+                <div className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7 space-y-2">
+                  <p>
+                    DM me <ExternalLink href="https://x.com/himanshustwts">@himanshustwts</ExternalLink>
+                  </p>
+                  <p>
+                    Isha (Community Lead) <ExternalLink href="https://x.com/slowdownisha">@slowdownisha</ExternalLink>
+                  </p>
+                </div>
+                <p className="font-mono text-white/90 text-[14px] md:text-[16px] leading-7 bg-white/5 border border-white/10 px-5 py-4">
                   <strong>PS:</strong> These are just guidelines to help you structure your thoughts. Ultimately, this is your work and your voice. If you want to do something completely different, go for it. The goal is just to make sure what you&apos;re sharing lands well and people actually get value from it. You know your work better than anyone - we&apos;re here to share an open platform for anyone and help amplify it.
                 </p>
               </section>
