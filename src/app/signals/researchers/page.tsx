@@ -29,7 +29,7 @@ const resourceSections = [
   {
     title: "Dedicated researcher pages on the Ground Zero site",
     points: [
-      "You will get own page with their SIGNALS episode(s), bio, links to their work, contact info",
+      "You will get own page with SIGNALS episode(s), bio, links to work & contact info",
       "Basically your portfolio page you can link to",
     ],
   },
@@ -47,7 +47,7 @@ const resourceSections = [
     points: [
       "Breaking session into 2-3 min clips on specific topics",
       "Easier to share, more viral potential",
-      "You can use these clips for their own social",
+      "You can use these clips for your own social",
     ],
   },
   {
@@ -61,7 +61,7 @@ const resourceSections = [
   {
     title: "Connect them with relevant people",
     points: [
-      "After their episode, actively intro to 2-3 people from network doing adjacent work",
+      "After the episode, actively intro to 2-3 people from network doing adjacent work",
       "This is probably bring more value.",
     ],
   },
@@ -78,6 +78,30 @@ const ExternalLink = ({ href, children }: { href: string; children: ReactNode })
     <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
   </a>
 );
+
+const renderPointContent = (point: string): ReactNode => {
+  if (point.includes("\"resources from this episode\"")) {
+    return (
+      <>
+        If you mention tools, papers, code repos in session - compiling those into a &quot;
+        <em>resources from this episode</em>
+        &quot; section
+      </>
+    );
+  }
+
+  if (point.includes("groundzeroai.in")) {
+    return (
+      <>
+        Research paper breakdowns published on {" "}
+        <ExternalLink href="https://groundzeroai.in">groundzeroai.in</ExternalLink>{" "}
+        to extend long-form reach
+      </>
+    );
+  }
+
+  return point;
+};
 
 export default function ResearchersSignalsPage() {
   return (
@@ -141,7 +165,7 @@ export default function ResearchersSignalsPage() {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="space-y-14">
-              <section className="space-y-5 border-l border-white/15 pl-6">
+              <section className="space-y-5 pl-6">
                 <p className="text-white font-serif text-[26px] tracking-tight leading-tight">
                   Ground Zero | SIGNALS.
                 </p>
@@ -160,7 +184,7 @@ export default function ResearchersSignalsPage() {
 
               <div className="h-px bg-white/10" />
 
-              <section className="space-y-6 border-l-2 border-white/10 pl-6">
+              <section className="space-y-6 pl-6">
                 <p className="font-serif text-[#f7cfa2] text-[22px] leading-tight">Session flow</p>
                 <ul className="space-y-3">
                   {sessionStructure.map((item) => (
@@ -175,7 +199,7 @@ export default function ResearchersSignalsPage() {
                 </ul>
               </section>
 
-              <section className="space-y-5 border-l-2 border-white/10 pl-6">
+              <section className="space-y-5 pl-6">
                 <p className="font-serif text-[#f7cfa2] text-[22px] leading-tight">Recording tips</p>
                 <ul className="space-y-3">
                   {recordingTips.map((tip) => (
@@ -195,7 +219,7 @@ export default function ResearchersSignalsPage() {
               {resourceSections.map(({ title, points }) => (
                 <section
                   key={title}
-                  className="space-y-3 border-l-2 border-white/10 pl-6"
+                  className="space-y-3 pl-6"
                 >
                   <p className="font-serif text-[#f7cfa2] text-[22px] leading-tight">
                     {title}
@@ -207,17 +231,7 @@ export default function ResearchersSignalsPage() {
                         className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7 flex gap-3"
                       >
                         <span className="text-white/50 mt-1">•</span>
-                        <span className="max-w-3xl text-white/85">
-                          {point.includes("\"resources from this episode\"") ? (
-                            <>
-                              If you mention tools, papers, code repos in session - compiling those into a &quot;
-                              <em>resources from this episode</em>
-                              &quot; section
-                            </>
-                          ) : (
-                            point
-                          )}
-                        </span>
+                        <span className="max-w-3xl text-white/85">{renderPointContent(point)}</span>
                       </li>
                     ))}
                   </ul>
@@ -226,7 +240,7 @@ export default function ResearchersSignalsPage() {
 
               <div className="h-px bg-white/10" />
 
-              <section className="space-y-5 border-l border-white/15 pl-6">
+              <section className="space-y-5 pl-6">
                 <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
                   These are some pointers we are coming up with and beyond excited to host you.
                 </p>
