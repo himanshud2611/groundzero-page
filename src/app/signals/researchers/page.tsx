@@ -166,9 +166,6 @@ export default function ResearchersSignalsPage() {
           >
             <div className="space-y-14">
               <section className="space-y-5 pl-6">
-                <p className="text-white font-serif text-[26px] tracking-tight leading-tight">
-                  Ground Zero | SIGNALS.
-                </p>
                 <p className="text-[#f7cfa2] font-serif text-[20px]">
                   <strong>For researchers and hackers</strong>
                 </p>
@@ -184,7 +181,7 @@ export default function ResearchersSignalsPage() {
 
               <div className="h-px bg-white/10" />
 
-              <section className="space-y-6 pl-6">
+              <section className="space-y-6 border-l-2 border-white/10 pl-6">
                 <p className="font-serif text-[#f7cfa2] text-[22px] leading-tight">Session flow</p>
                 <ul className="space-y-3">
                   {sessionStructure.map((item) => (
@@ -199,7 +196,7 @@ export default function ResearchersSignalsPage() {
                 </ul>
               </section>
 
-              <section className="space-y-5 pl-6">
+              <section className="space-y-5 border-l-2 border-white/10 pl-6">
                 <p className="font-serif text-[#f7cfa2] text-[22px] leading-tight">Recording tips</p>
                 <ul className="space-y-3">
                   {recordingTips.map((tip) => (
@@ -219,7 +216,7 @@ export default function ResearchersSignalsPage() {
               {resourceSections.map(({ title, points }) => (
                 <section
                   key={title}
-                  className="space-y-3 pl-6"
+                  className="space-y-3 border-l-2 border-white/10 pl-6"
                 >
                   <p className="font-serif text-[#f7cfa2] text-[22px] leading-tight">
                     {title}
@@ -240,7 +237,7 @@ export default function ResearchersSignalsPage() {
 
               <div className="h-px bg-white/10" />
 
-              <section className="space-y-5 pl-6">
+              <section className="space-y-5 border-l border-white/15 pl-6">
                 <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
                   These are some pointers we are coming up with and beyond excited to host you.
                 </p>
