@@ -166,9 +166,12 @@ export default function ResearchersSignalsPage() {
           >
             <div className="space-y-14">
               <section className="space-y-5 pl-6">
-                <p className="text-[#f7cfa2] font-serif text-[20px]">
-                  <strong>For researchers and hackers</strong>
+                <p className="text-[#f7cfa2] font-serif text-[26px] tracking-tight leading-tight">
+                  Ground Zero | SIGNALS.
                 </p>
+                {/* <p className="text-[#f7cfa2] font-serif text-[20px]">
+                  <strong>For researchers and hackers</strong>
+                </p> */}
                 <div className="space-y-3 max-w-2xl">
                   <p className="font-mono text-white/85 text-[14px] md:text-[16px] leading-7">
                     Hi. Welcome to SIGNALS. I really appreciate your presence here and we are looking forward to coming with high signal and tasteful content about the absolutely amazing work you have done and been doing.
