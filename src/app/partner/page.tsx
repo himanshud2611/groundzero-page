@@ -226,6 +226,21 @@ export default function Partner() {
                   </button>
                 </div>
               </div>
+
+              {/* Twitter Handle */}
+              <div className="mt-4 md:mt-5 pt-4 md:pt-5 border-t border-white/8">
+                <p className="font-mono font-normal text-[15px] md:text-[18px] leading-relaxed md:leading-relaxed tracking-tight text-white/80">
+                  OR reach out:{' '}
+                  <a
+                    href="https://x.com/himanshustwts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#7dd3c0] hover:text-[#a0e7d7] transition-colors duration-200"
+                  >
+                    @himanshustwts
+                  </a>
+                </p>
+              </div>
             </div>
           </motion.div>
         </motion.article>
