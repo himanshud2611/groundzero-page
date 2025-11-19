@@ -161,12 +161,24 @@ export default function Signals() {
                                     @himanshustwts
                                 </a>
                                 <br /><br />
-                                <a
+                                <motion.a
                                     href="#signals-form"
                                     className="gap-2 w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors"
+                                    animate={{
+                                        boxShadow: [
+                                            '0 0 10px rgba(255, 255, 255, 0.3)',
+                                            '0 0 20px rgba(255, 255, 255, 0.6)',
+                                            '0 0 10px rgba(255, 255, 255, 0.3)',
+                                        ],
+                                    }}
+                                    transition={{
+                                        duration: 1,
+                                        repeat: Infinity,
+                                        ease: 'easeInOut',
+                                    }}
                                 >
                                     Share your signal ↴
-                                </a>
+                                </motion.a>
                             </p>
                         </div>
 
