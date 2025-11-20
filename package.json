@@ -1,7 +1,18 @@
 {
-  "name": "groundzero-website",
+  "name": "groundzero-page",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "Ground Zero - A creative space shaping the frontier of tech, featuring SIGNALS and curated AI/ML resources",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himanshud2611/groundzero-page.git"
+  },
+  "author": "Himanshu Dubey <@himanshustwts>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/himanshud2611/groundzero-page/issues"
+  },
+  "homepage": "https://groundzeroai.in",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
