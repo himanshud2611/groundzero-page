@@ -12,7 +12,7 @@ const navItems = [
 export default function Header() {
   return (
     <header className="absolute left-0 top-0 w-full h-20 md:h-[90px] flex items-center px-[18px] md:px-16 py-3 md:py-6 z-10">
-      <nav className="w-full flex items-center justify-between p-1.5">
+      <nav className="w-full flex items-center justify-between md:justify-center md:gap-10 p-1.5">
         <Link href="/" className="relative size-7 md:size-8 shrink-0">
           <Image
             src="/logo.svg"
