@@ -26,31 +26,19 @@ This guide will help you set up Supabase for the custom newsletter functionality
 ```sql
 -- Create newsletter subscribers table
 CREATE TABLE newsletter_subscribers (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  id TEXT PRIMARY KEY DEFAULT lower(substr(md5(random()::text || clock_timestamp()::text), 1, 10)),
   email VARCHAR(255) UNIQUE NOT NULL,
-  subscribed_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  subscribed_at TIMESTAMP DEFAULT date_trunc('minute', NOW()),
   source VARCHAR(50) DEFAULT 'popup',
   is_active BOOLEAN DEFAULT true,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  created_at TIMESTAMP DEFAULT date_trunc('minute', NOW())
 );
 
 -- Create index for faster email lookups
 CREATE INDEX idx_newsletter_email ON newsletter_subscribers(email);
 
--- Enable Row Level Security (RLS)
-ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
-
--- Create policy to allow inserts from anyone (for newsletter signup)
-CREATE POLICY "Allow public newsletter signups"
-ON newsletter_subscribers FOR INSERT
-TO anon
-WITH CHECK (true);
-
--- Create policy to allow authenticated users to read (optional)
-CREATE POLICY "Allow authenticated read"
-ON newsletter_subscribers FOR SELECT
-TO authenticated
-USING (true);
+-- Disable Row Level Security (RLS) for full access
+ALTER TABLE newsletter_subscribers DISABLE ROW LEVEL SECURITY;
 ```
 
 4. Click "Run" to execute the query
@@ -135,8 +123,7 @@ ORDER BY subscribed_at DESC;
 
 ## Security Notes
 
-- ✅ Row Level Security (RLS) is enabled
-- ✅ Only INSERT operations are allowed from public
+- ✅ Row Level Security (RLS) is disabled for full access
 - ✅ Email validation happens both client-side and API-side
 - ✅ Duplicate emails are prevented at database level
 - ✅ API credentials are safe to expose (they're client-side keys)
