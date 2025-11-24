@@ -162,28 +162,10 @@ export default function Signals() {
                                         @himanshustwts
                                     </a>
                                 </p>
-                                <div className="flex items-center justify-between w-full mt-4">
-                                    <motion.a
-                                        href="#signals-form"
-                                        className="gap-2 w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors"
-                                        animate={{
-                                            boxShadow: [
-                                                '0 0 10px rgba(255, 255, 255, 0.3)',
-                                                '0 0 20px rgba(255, 255, 255, 0.6)',
-                                                '0 0 10px rgba(255, 255, 255, 0.3)',
-                                            ],
-                                        }}
-                                        transition={{
-                                            duration: 1,
-                                            repeat: Infinity,
-                                            ease: 'easeInOut',
-                                        }}
-                                    >
-                                        Share your signal ↴
-                                    </motion.a>
+                                <div className="flex flex-col md:flex-row items-center md:justify-between w-full mt-4 gap-3 md:gap-0">
                                     <motion.a
                                         href="/signals/upcoming-guests"
-                                        className="gap-2 w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors"
+                                        className="gap-2 w-full md:w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors text-center"
                                         animate={{
                                             boxShadow: [
                                                 '0 0 10px rgba(255, 255, 255, 0.3)',
@@ -198,6 +180,24 @@ export default function Signals() {
                                         }}
                                     >
                                         Upcoming Guests →
+                                    </motion.a>
+                                    <motion.a
+                                        href="#signals-form"
+                                        className="gap-2 w-full md:w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors text-center"
+                                        animate={{
+                                            boxShadow: [
+                                                '0 0 10px rgba(255, 255, 255, 0.3)',
+                                                '0 0 20px rgba(255, 255, 255, 0.6)',
+                                                '0 0 10px rgba(255, 255, 255, 0.3)',
+                                            ],
+                                        }}
+                                        transition={{
+                                            duration: 1,
+                                            repeat: Infinity,
+                                            ease: 'easeInOut',
+                                        }}
+                                    >
+                                        Share your signal ↴
                                     </motion.a>
                                 </div>
                             </div>
