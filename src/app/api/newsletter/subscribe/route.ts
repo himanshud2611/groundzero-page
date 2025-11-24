@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { isValidEmail, normalizeEmail } from '@/lib/validation';
 
 export async function POST(request: Request) {
   try {
@@ -13,17 +14,16 @@ export async function POST(request: Request) {
       );
     }
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    // Validate email format
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
-    // Normalize email (lowercase and trim)
-    const normalizedEmail = email.toLowerCase().trim();
+    // Normalize email
+    const normalizedEmail = normalizeEmail(email);
 
     // Insert into Supabase
     const { data, error } = await supabase

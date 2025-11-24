@@ -150,18 +150,19 @@ export default function Signals() {
                                     </p>
                                 ))}
                             </div>
-                            <p className="font-mono font-normal text-[17px] leading-normal tracking-[-1.02px] text-white w-full mt-4">
-                                <span>- </span>
-                                <a
-                                    href="https://x.com/himanshustwts"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-[#628bb2] hover:text-[#7a9fc4] transition-colors duration-200"
-                                >
-                                    @himanshustwts
-                                </a>
-                                <br /><br />
-                                <div className="flex items-center justify-between w-full">
+                            <div className="font-mono font-normal text-[17px] leading-normal tracking-[-1.02px] text-white w-full mt-4">
+                                <p>
+                                    <span>- </span>
+                                    <a
+                                        href="https://x.com/himanshustwts"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-[#628bb2] hover:text-[#7a9fc4] transition-colors duration-200"
+                                    >
+                                        @himanshustwts
+                                    </a>
+                                </p>
+                                <div className="flex items-center justify-between w-full mt-4">
                                     <motion.a
                                         href="#signals-form"
                                         className="gap-2 w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors"
@@ -199,7 +200,7 @@ export default function Signals() {
                                         Upcoming Guests →
                                     </motion.a>
                                 </div>
-                            </p>
+                            </div>
                         </div>
 
                         {/* Form Container */}

@@ -1,23 +1,42 @@
-# Supabase Newsletter Setup Guide
+# Supabase Setup Guide
 
-This guide will help you set up Supabase for the custom newsletter functionality.
+This guide covers the Supabase setup for Ground Zero. The project uses **two separate Supabase projects** under the GroundZero Page organization:
+
+1. **Newsletter Emails** - Handles newsletter subscriptions
+2. **Community Blogs** - Handles blog submissions
 
 ## Prerequisites
 
 - A Supabase account (free tier works fine)
 - Access to your Supabase project dashboard
 
-## Step 1: Create a Supabase Project
+## Architecture Overview
+
+```
+Ground Zero Application
+├── Newsletter Emails Project (gbxxnumzvuplcqmokjoi)
+│   └── Table: newsletter_subscribers
+│       └── Used by: Newsletter popup component
+└── Community Blogs Project (jvqblcbwixxdtnaaskci)
+    └── Table: blog_submissions
+        └── Used by: Blog submission form on /spotlights/community-blogs
+```
+
+---
+
+## Project 1: Newsletter Emails
+
+### Step 1: Create Newsletter Emails Project
 
 1. Go to [supabase.com](https://supabase.com) and sign in
 2. Click "New Project"
 3. Fill in the project details:
-   - **Name**: groundzero-newsletter (or any name you prefer)
+   - **Name**: newsletter emails
    - **Database Password**: Save this password securely
    - **Region**: Choose the closest region to your users
 4. Click "Create new project" and wait for it to be ready (1-2 minutes)
 
-## Step 2: Create the Newsletter Table
+### Step 2: Create the Newsletter Subscribers Table
 
 1. In your Supabase dashboard, go to the **SQL Editor** (left sidebar)
 2. Click "New Query"

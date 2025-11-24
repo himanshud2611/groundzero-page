@@ -7,6 +7,14 @@ import Link from "next/link";
 
 const spotlights = [
     {
+        title: "Community Blogs",
+        description: "A curated hotspot of high-signal blogs with taste in AI, Robotics, Computational Biology, Experiments, and technology in general. Discover voices shaping the frontier with fresh perspectives and deep technical insights. ",
+        boldText: "Bounties for amazing writeups",
+        resourceCount: "Submit your entry →",
+        href: "/spotlights/community-blogs",
+        isNew: true,
+    },
+    {
         title: "Blogs and Resources",
         description: "Curated collection of top AI/ML blogs, handbooks, and learning resources from amazing researchers and practitioners",
         resourceCount: "37+",
@@ -63,26 +71,6 @@ export default function Spotlights() {
                         >
                             Spotlights by Ground Zero
                         </motion.h1>
-                        <motion.p
-                            className="font-mono text-base md:text-lg text-white/60 text-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 0.3,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
-                        >
-                            curated by{" "}
-                            <a
-                                href="https://x.com/himanshustwts"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[#628bb2] hover:text-[#7a9fc4] transition-colors duration-200"
-                            >
-                                @himanshustwts
-                            </a>
-                        </motion.p>
                     </div>
 
                     {/* Spotlights Grid */}
@@ -114,19 +102,42 @@ export default function Spotlights() {
                                     <div className="flex items-start justify-between gap-4">
                                         <div className="flex-1 space-y-3">
                                             {/* Title */}
-                                            <h2 className="font-serif text-[24px] md:text-[28px] leading-tight tracking-[-0.4px] text-white group-hover:text-[#628bb2] transition-colors duration-300">
-                                                {spotlight.title}
-                                            </h2>
+                                            <div className="relative inline-flex items-start gap-2">
+                                                <h2 className="font-serif text-[24px] md:text-[28px] leading-tight tracking-[-0.4px] text-white group-hover:text-[#628bb2] transition-colors duration-300">
+                                                    {spotlight.title}
+                                                </h2>
+                                                {spotlight.isNew && (
+                                                    <motion.span
+                                                        className="px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide mt-0.5 md:mt-1"
+                                                        animate={{
+                                                            opacity: [1, 0.6, 1],
+                                                            scale: [1, 1.1, 1],
+                                                        }}
+                                                        transition={{
+                                                            duration: 1,
+                                                            repeat: Infinity,
+                                                            ease: 'easeInOut',
+                                                        }}
+                                                    >
+                                                        NEW
+                                                    </motion.span>
+                                                )}
+                                            </div>
 
                                             {/* Description */}
                                             <p className="font-mono text-[14px] md:text-[15px] leading-relaxed text-white/60 group-hover:text-white/70 transition-colors duration-300">
                                                 {spotlight.description}
+                                                {spotlight.boldText && (
+                                                    <span className="font-bold text-white/80 group-hover:text-white/90">
+                                                        {spotlight.boldText}
+                                                    </span>
+                                                )}
                                             </p>
 
                                             {/* Resource Count */}
                                             <div className="flex items-center gap-2 pt-2">
                                                 <div className="font-mono text-[12px] md:text-[13px] text-white/40 group-hover:text-[#628bb2]/70 transition-colors duration-300">
-                                                    {spotlight.resourceCount} resources
+                                                    {spotlight.resourceCount.includes("→") ? spotlight.resourceCount : `${spotlight.resourceCount} resources`}
                                                 </div>
                                             </div>
                                         </div>
