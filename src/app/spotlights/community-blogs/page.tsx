@@ -6,7 +6,7 @@ import BackgroundNoise from "@/components/common/BackgroundNoise";
 import LightsBackground from "@/components/common/LightsBackground";
 import { motion, AnimatePresence } from "framer-motion";
 import BlogSubmissionPopup from "@/components/BlogSubmissionPopup";
-import { fadeInUp, fadeInUpDelayed, glowAnimation, textGlowAnimation } from "@/lib/animations";
+import { fadeInUp, fadeInUpDelayed, fadeInUpWithGlow, textGlowAnimation } from "@/lib/animations";
 
 export default function CommunityBlogs() {
     const [isSubmitPopupOpen, setIsSubmitPopupOpen] = useState(false);
@@ -36,8 +36,7 @@ export default function CommunityBlogs() {
                         <motion.button
                             onClick={() => setIsSubmitPopupOpen(true)}
                             className="gap-2 w-max px-4 py-1.5 rounded-full border border-white/20 text-white/80 font-mono text-sm tracking-tight hover:text-white hover:border-white/40 transition-colors"
-                            {...fadeInUpDelayed(0.4)}
-                            {...glowAnimation}
+                            {...fadeInUpWithGlow(0.4)}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
