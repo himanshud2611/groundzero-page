@@ -1,8 +1,11 @@
 "use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackgroundNoise from "@/components/common/BackgroundNoise";
+import LightsBackground from "@/components/common/LightsBackground";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { fadeInUp, fadeInUpDelayed } from "@/lib/animations";
 
 const resources = [
     { title: "Gen AI Handbook by Will Brown", url: "https://genai-handbook.github.io/", domain: "genai-handbook.github.io" },
@@ -47,61 +50,27 @@ const resources = [
 export default function BlogsAndResources() {
     return (
         <div className="relative flex flex-col items-center min-h-screen w-full overflow-hidden bg-[#1a1a1a]">
-            {/* Background with noise */}
-            <div
-                className="absolute inset-0 opacity-[0.1]"
-                style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.67' numOctaves='3' stitchTiles='stitch' seed='2400'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='%23454545'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: "repeat",
-                    backgroundSize: "256px 256px",
-                }}
-            />
-
+            <BackgroundNoise />
             <Header />
-
-            {/* Lights background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <Image
-                    src="/signals-page-lights.svg"
-                    alt=""
-                    width={1440}
-                    height={872}
-                    className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-auto max-w-none"
-                    priority
-                />
-            </div>
+            <LightsBackground />
 
             <main className="relative flex-1 w-full pt-32 px-4 sm:px-10 md:px-16 pb-20">
                 {/* Content */}
                 <motion.article
                     className="relative z-10 w-full max-w-3xl mx-auto"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    {...fadeInUp}
                 >
                     {/* Title Section */}
                     <div className="flex flex-col items-center gap-3 mb-8 md:mb-12">
                         <motion.h1
                             className="font-serif font-normal text-[32px] md:text-[40px] leading-none tracking-[-0.4px] text-white text-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 0.2,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
+                            {...fadeInUpDelayed(0.2)}
                         >
                             Blogs and Resources
                         </motion.h1>
                         <motion.p
                             className="font-mono text-base md:text-lg text-white/60 text-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 0.3,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
+                            {...fadeInUpDelayed(0.3)}
                         >
                             curated by{" "}
                             <a
@@ -118,13 +87,7 @@ export default function BlogsAndResources() {
                     {/* Resources List */}
                     <motion.div
                         className="bg-white/5 px-4 md:px-6 lg:px-10 py-6 md:py-8 lg:py-12"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.4,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
+                        {...fadeInUpDelayed(0.4)}
                     >
                         <ul className="space-y-2">
                             {resources.map((resource, index) => (
@@ -192,13 +155,7 @@ export default function BlogsAndResources() {
                     {/* Closing Section */}
                     <motion.div
                         className="mt-6 bg-white/5 px-6 md:px-10 py-8 md:py-10"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.6,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
+                        {...fadeInUpDelayed(0.6)}
                     >
                         <div className="space-y-6 font-mono text-[15px] md:text-[16px] text-white/70">
                             <p>

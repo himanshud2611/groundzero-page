@@ -2,9 +2,12 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackgroundNoise from "@/components/common/BackgroundNoise";
+import LightsBackground from "@/components/common/LightsBackground";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedSignalsLogo from "@/components/AnimatedSignalsLogo";
+import { fadeInUp, fadeInUpDelayed, glowAnimation } from "@/lib/animations";
 
 const paragraphs = [
     {
@@ -42,29 +45,9 @@ export default function Signals() {
 
     return (
         <div className="relative flex flex-col items-center min-h-screen w-full overflow-hidden bg-[#1a1a1a]">
-            {/* Background with noise */}
-            <div
-                className="absolute inset-0 opacity-[0.1]"
-                style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.67' numOctaves='3' stitchTiles='stitch' seed='2400'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='%23454545'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: "repeat",
-                    backgroundSize: "256px 256px",
-                }}
-            />
-
+            <BackgroundNoise />
             <Header />
-
-            {/* Lights background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <Image
-                    src="/signals-page-lights.svg"
-                    alt=""
-                    width={1440}
-                    height={872}
-                    className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-auto max-w-none"
-                    priority
-                />
-            </div>
+            <LightsBackground />
 
             <main className="relative flex-1 w-full pt-32 px-0 sm:px-10 md:px-16">
                 {/* Content */}

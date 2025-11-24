@@ -1,9 +1,11 @@
 "use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackgroundNoise from "@/components/common/BackgroundNoise";
+import LightsBackground from "@/components/common/LightsBackground";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
+import { fadeInUp, fadeInUpDelayed, pulseAnimation } from "@/lib/animations";
 
 const spotlights = [
     {
@@ -25,49 +27,21 @@ const spotlights = [
 export default function Spotlights() {
     return (
         <div className="relative flex flex-col items-center min-h-screen w-full overflow-hidden bg-[#1a1a1a]">
-            {/* Background with noise */}
-            <div
-                className="absolute inset-0 opacity-[0.1]"
-                style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.67' numOctaves='3' stitchTiles='stitch' seed='2400'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' fill='%23454545'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: "repeat",
-                    backgroundSize: "256px 256px",
-                }}
-            />
-
+            <BackgroundNoise />
             <Header />
-
-            {/* Lights background */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <Image
-                    src="/signals-page-lights.svg"
-                    alt=""
-                    width={1440}
-                    height={872}
-                    className="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-auto max-w-none"
-                    priority
-                />
-            </div>
+            <LightsBackground />
 
             <main className="relative flex-1 w-full pt-32 px-4 sm:px-10 md:px-16 pb-20">
                 {/* Content */}
                 <motion.article
                     className="relative z-10 w-full max-w-4xl mx-auto"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    {...fadeInUp}
                 >
                     {/* Title Section */}
                     <div className="flex flex-col items-center gap-3 mb-12 md:mb-16">
                         <motion.h1
                             className="font-serif font-normal text-[32px] md:text-[40px] leading-none tracking-[-0.4px] text-white text-center"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 0.2,
-                                ease: [0.16, 1, 0.3, 1],
-                            }}
+                            {...fadeInUpDelayed(0.2)}
                         >
                             Spotlights by Ground Zero
                         </motion.h1>
@@ -76,13 +50,7 @@ export default function Spotlights() {
                     {/* Spotlights Grid */}
                     <motion.div
                         className="space-y-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.8,
-                            delay: 0.4,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
+                        {...fadeInUpDelayed(0.4)}
                     >
                         {spotlights.map((spotlight, index) => (
                             <motion.div
@@ -109,15 +77,7 @@ export default function Spotlights() {
                                                 {spotlight.isNew && (
                                                     <motion.span
                                                         className="px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide mt-0.5 md:mt-1"
-                                                        animate={{
-                                                            opacity: [1, 0.6, 1],
-                                                            scale: [1, 1.1, 1],
-                                                        }}
-                                                        transition={{
-                                                            duration: 1,
-                                                            repeat: Infinity,
-                                                            ease: 'easeInOut',
-                                                        }}
+                                                        {...pulseAnimation}
                                                     >
                                                         NEW
                                                     </motion.span>
