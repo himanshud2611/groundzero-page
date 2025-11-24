@@ -116,9 +116,9 @@ export default function Home() {
                 <Image
                   src="/substack-icon.svg"
                   alt="Substack"
-                  width={22}
-                  height={22}
-                  className="relative object-contain opacity-80 md:w-7 md:h-7"
+                  width={18}
+                  height={18}
+                  className="relative object-contain opacity-80 md:w-6 md:h-6"
                 />
               </motion.button>
             </a>
