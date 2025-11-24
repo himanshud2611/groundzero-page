@@ -161,7 +161,7 @@ export default function BlogSubmissionPopup({ isOpen, onClose }: BlogSubmissionP
                                             {/* Blog Link */}
                                             <div>
                                                 <label htmlFor="blogLink" className="block font-mono text-sm text-white/80 mb-2">
-                                                    Blog Link *
+                                                    Direct Link to Blog Post *
                                                 </label>
                                                 <input
                                                     type="url"
