@@ -66,7 +66,7 @@ export default function CommunityBlogs() {
                                 </motion.span>
                             </button>
                             <p className="font-mono text-[12px] md:text-[13px] text-white/40 mt-2">
-                                Page updates after every 24hr
+                                Page will be updated on Dec 02, 2025
                             </p>
                         </div>
                     </motion.div>
