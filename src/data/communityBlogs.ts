@@ -76,6 +76,14 @@ export const communityBlogs: Blog[] = [
         authorTwitter: "https://x.com/tensorqt",
         authorHandle: "@tensorqt",
     },
+    {
+        id: 9,
+        title: "Activation Steering With Mean Response Probes : A Case Study In Suppressing Sycophancy In Laguage Models During TTC",
+        link: "https://huggingface.co/blog/TensorSlay/activation-steering-with-mean-response-probes#activation-steering-with-mean-response-probes--a-case-study-in-suppressing-sycophancy-in-laguage-models-during-ttc",
+        category: "AI x Interpretability",
+        authorTwitter: "https://x.com/TensorSlay",
+        authorHandle: "@TensorSlay",
+    },
 ];
 
 /**
