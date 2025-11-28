@@ -84,6 +84,14 @@ export const communityBlogs: Blog[] = [
         authorTwitter: "https://x.com/TensorSlay",
         authorHandle: "@TensorSlay",
     },
+    {
+        id: 10,
+        title: "On emergent misalignment from reward hacking",
+        link: "https://secemp.blog/2025/11/24/on-emergent-misalignment-from-reward-hacking/",
+        category: "AI x Experiments",
+        authorTwitter: "https://x.com/secemp9",
+        authorHandle: "@secemp9",
+    },
 ];
 
 /**
