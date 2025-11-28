@@ -92,6 +92,14 @@ export const communityBlogs: Blog[] = [
         authorTwitter: "https://x.com/secemp9",
         authorHandle: "@secemp9",
     },
+    {
+        id: 11,
+        title: "Muon improved chemistry models",
+        link: "https://arnavmardia.substack.com/p/muon-improved-chemistry-models",
+        category: "AI x Science",
+        authorTwitter: "https://x.com/MardiaArnav",
+        authorHandle: "@MardiaArnav",
+    },
 ];
 
 /**
