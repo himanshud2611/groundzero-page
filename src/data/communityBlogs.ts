@@ -56,7 +56,7 @@ export const communityBlogs: Blog[] = [
         id: 6,
         title: "Reprogramming Stem Cells with GPT-4b Micro",
         link: "https://medium.com/@nabbo/reprogramming-stem-cells-with-gpt-4b-micro-0982cc598ef2",
-        category: "AI x Biology",
+        category: "AI x Science",
         authorTwitter: "https://x.com/TensorTwerker",
         authorHandle: "@TensorTwerker",
     },
