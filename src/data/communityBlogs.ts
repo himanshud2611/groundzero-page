@@ -56,7 +56,7 @@ export const communityBlogs: Blog[] = [
         id: 6,
         title: "Reprogramming Stem Cells with GPT-4b Micro",
         link: "https://medium.com/@nabbo/reprogramming-stem-cells-with-gpt-4b-micro-0982cc598ef2",
-        category: "AI x Biology",
+        category: "AI x Science",
         authorTwitter: "https://x.com/TensorTwerker",
         authorHandle: "@TensorTwerker",
     },
@@ -83,6 +83,22 @@ export const communityBlogs: Blog[] = [
         category: "AI x Interpretability",
         authorTwitter: "https://x.com/TensorSlay",
         authorHandle: "@TensorSlay",
+    },
+    {
+        id: 10,
+        title: "On emergent misalignment from reward hacking",
+        link: "https://ponder.ing/on-emergent-misalignment-from-reward-hacking/",
+        category: "AI x Experiments",
+        authorTwitter: "https://x.com/secemp9",
+        authorHandle: "@secemp9",
+    },
+    {
+        id: 11,
+        title: "Muon improved chemistry models",
+        link: "https://mardia.blog/muon-chemisty/",
+        category: "AI x Science",
+        authorTwitter: "https://x.com/MardiaArnav",
+        authorHandle: "@MardiaArnav",
     },
 ];
 
