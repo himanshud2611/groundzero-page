@@ -100,6 +100,38 @@ export const communityBlogs: Blog[] = [
         authorTwitter: "https://x.com/MardiaArnav",
         authorHandle: "@MardiaArnav",
     },
+    {
+        id: 12,
+        title: "Speedrunning an RL environment",
+        link: "https://sidb.in/posts/rl-env-speedrun",
+        category: "AI x Experiments",
+        authorTwitter: "https://x.com/sidbing",
+        authorHandle: "@sidbing",
+    },
+    {
+        id: 13,
+        title: "Intelligence will always be valuable + the first ever digital speciation",
+        link: "https://proteinlanguagemodel.com/blog/intelligence_will_always_be_valuable",
+        category: "AI x Science",
+        authorTwitter: "https://x.com/ravishar313",
+        authorHandle: "@ravishar313",
+    },
+    {
+        id: 14,
+        title: "Anatomy of BoltzGen",
+        link: "https://huggingface.co/spaces/ludocomito/anatomy-of-boltzgen",
+        category: "AI x Science",
+        authorTwitter: "https://x.com/ludocomito",
+        authorHandle: "@ludocomito",
+    },
+    {
+        id: 15,
+        title: "Towards Human like Memory for AI Agents",
+        link: "https://manthanguptaa.in/posts/towards_human_like_memory_for_ai_agents/",
+        category: "AI Infra x Experiments",
+        authorTwitter: "https://x.com/manthanguptaa",
+        authorHandle: "@manthanguptaa",
+    },
 ];
 
 /**
