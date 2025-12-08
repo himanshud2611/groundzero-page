@@ -132,6 +132,38 @@ export const communityBlogs: Blog[] = [
         authorTwitter: "https://x.com/manthanguptaa",
         authorHandle: "@manthanguptaa",
     },
+    {
+        id: 16,
+        title: "How prompt caching works - Paged Attention and Automatic Prefix Caching plus practical tips",
+        link: "https://sankalp.bearblog.dev/how-prompt-caching-works/",
+        category: "AI x Experiments",
+        authorTwitter: "https://x.com/dejavucoder",
+        authorHandle: "@dejavucoder",
+    },
+    {
+        id: 17,
+        title: "Are inhouse LLMs really cheaper than APIs?",
+        link: "https://bhuvanesh09.github.io/posts/are_inhouse_llms_cheaper_than_api/",
+        category: "AI Infra x Experiments",
+        authorTwitter: "https://x.com/_bhuvanesh_",
+        authorHandle: "@_bhuvanesh_",
+    },
+    {
+        id: 18,
+        title: "optimizing multilingual compression via biased tokenization",
+        link: "https://quagmire.bearblog.dev/experiments/optimal-compression-for-tokenizers/",
+        category: "AI x Experiments",
+        authorTwitter: "https://x.com/prompt_Tunes",
+        authorHandle: "@prompt_Tunes",
+    },
+    {
+        id: 19,
+        title: "Softmax and Lagrange Multipliers",
+        link: "https://teltam.github.io/posts/softmax-lagrange.html",
+        category: "AI x Experiments",
+        authorTwitter: "https://x.com/twofifteenam",
+        authorHandle: "@twofifteenam",
+    },
 ];
 
 /**
