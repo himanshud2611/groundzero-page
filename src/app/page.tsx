@@ -203,6 +203,42 @@ export default function Home() {
               </span>
             </motion.div>
           </Link>
+
+          {/* Community Blogs Card */}
+          <Link href="/spotlights/community-blogs">
+            <motion.div
+              className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-black/60 shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
+              whileHover={{
+                scale: 1.01,
+                backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                borderColor: 'rgba(0, 0, 0, 0.75)',
+                boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35)',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {/* NEW Badge */}
+              <motion.span
+                className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide"
+                animate={{
+                  opacity: [1, 0.6, 1],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                NEW
+              </motion.span>
+              <span className="font-mono font-medium text-[16px] md:text-[18px] text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
+                Introducing Community Blogs →
+              </span>
+            </motion.div>
+          </Link>
         </div>
       </main>
       <Footer fixed color="text-[#C88367]/60" />
