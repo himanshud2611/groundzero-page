@@ -18,7 +18,7 @@ export default function Home() {
         <HeroBackground />
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center gap-8 md:gap-14 pt-0 pb-20 md:pb-20 px-4 md:px-0">
+        <div className="relative z-10 flex flex-col items-center gap-8 md:gap-14 pt-16 md:pt-0 pb-20 md:pb-20 px-4 md:px-0">
           <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center">
             <h1 className="flex flex-col items-center gap-px font-serif text-[56px] md:text-[68px] leading-14 md:leading-18 tracking-[-3.92px] md:tracking-tighter">
               <motion.span
