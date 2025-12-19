@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackgroundNoise from "@/components/common/BackgroundNoise";
@@ -9,20 +9,62 @@ import BlogSubmissionPopup from "@/components/BlogSubmissionPopup";
 import CategoryDropdown from "@/components/community-blogs/CategoryDropdown";
 import BlogCard from "@/components/community-blogs/BlogCard";
 import { fadeInUp, fadeInUpDelayed, fadeInUpWithGlow } from "@/lib/animations";
-import { communityBlogs, getAllCategories } from "@/data/communityBlogs";
+import { communityBlogsSupabase } from "@/lib/supabase";
+import { extractHandle } from "@/lib/utils";
+import { Blog } from "@/types/blog";
 
 export default function CommunityBlogs() {
     const [isSubmitPopupOpen, setIsSubmitPopupOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
     const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+    const [newBlogs, setNewBlogs] = useState<Blog[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    // Get unique categories with "All" option
-    const categories = ["All", ...getAllCategories()];
+    // Fetch newly approved blogs from Supabase (these are NEW submissions, not the static ones)
+    useEffect(() => {
+        const fetchApprovedBlogs = async () => {
+            setLoading(true);
+            try {
+                const { data, error } = await communityBlogsSupabase
+                    .from('blog_submissions')
+                    .select('*')
+                    .eq('status', 'approved')
+                    .order('reviewed_at', { ascending: true });
+
+                if (error) throw error;
+
+                // Transform Supabase data to Blog type
+                const transformedBlogs: Blog[] = (data || []).map((item, index) => ({
+                    id: index,
+                    title: item.title || 'Untitled',
+                    link: item.blog_link,
+                    category: item.category || 'Uncategorized',
+                    authorTwitter: item.profile_link,
+                    authorHandle: extractHandle(item.profile_link),
+                    createdAt: item.reviewed_at || item.created_at,
+                }));
+
+                setNewBlogs(transformedBlogs);
+            } catch (error) {
+                console.error('Error fetching blogs:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchApprovedBlogs();
+    }, []);
+
+    // All blogs come from Supabase (approved submissions)
+    const allBlogs = newBlogs;
+
+    // Get unique categories from approved blogs
+    const categories = ["All", ...Array.from(new Set(newBlogs.map(blog => blog.category)))];
 
     // Filter blogs based on selected category
     const filteredBlogs = selectedCategory === "All"
-        ? communityBlogs
-        : communityBlogs.filter(blog => blog.category === selectedCategory);
+        ? allBlogs
+        : allBlogs.filter(blog => blog.category === selectedCategory);
 
     return (
         <div className="relative flex flex-col items-center min-h-screen w-full overflow-hidden bg-[#1a1a1a]">
@@ -87,9 +129,23 @@ export default function CommunityBlogs() {
                         className="space-y-6"
                         {...fadeInUpDelayed(0.5)}
                     >
-                        {filteredBlogs.map((blog, index) => (
-                            <BlogCard key={blog.id} blog={blog} index={index} />
-                        ))}
+                        {filteredBlogs.length === 0 && !loading ? (
+                            <div className="text-center py-12">
+                                <p className="font-mono text-white/40">No blogs found in this category</p>
+                            </div>
+                        ) : (
+                            <>
+                                {filteredBlogs.map((blog, index) => (
+                                    <BlogCard key={blog.id} blog={blog} index={index} />
+                                ))}
+                                {loading && (
+                                    <div className="flex items-center justify-center py-4">
+                                        <div className="w-5 h-5 border-2 border-white/20 border-t-[#628bb2] rounded-full animate-spin" />
+                                        <p className="font-mono text-xs text-white/30 ml-3">Checking for new blogs...</p>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </motion.div>
 
                     {/* Note */}
