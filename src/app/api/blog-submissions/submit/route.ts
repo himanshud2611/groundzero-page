@@ -5,12 +5,12 @@ import { isValidEmail, isValidUrl, normalizeEmail } from '@/lib/validation';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, profileLink, blogLink } = body;
+    const { title, email, profileLink, blogLink } = body;
 
     // Validation
-    if (!email || !profileLink || !blogLink) {
+    if (!title || !email || !profileLink || !blogLink) {
       return NextResponse.json(
-        { error: 'Email, profile link, and blog link are required' },
+        { error: 'Title, email, profile link, and blog link are required' },
         { status: 400 }
       );
     }
@@ -36,6 +36,7 @@ export async function POST(request: NextRequest) {
       .from('blog_submissions')
       .insert([
         {
+          title: title.trim(),
           email: normalizeEmail(email),
           profile_link: profileLink.trim(),
           blog_link: blogLink.trim(),

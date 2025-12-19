@@ -8,6 +8,7 @@ interface BlogSubmissionPopupProps {
 }
 
 export default function BlogSubmissionPopup({ isOpen, onClose }: BlogSubmissionPopupProps) {
+    const [title, setTitle] = useState("");
     const [email, setEmail] = useState("");
     const [profileLink, setProfileLink] = useState("");
     const [blogLink, setBlogLink] = useState("");
@@ -27,6 +28,7 @@ export default function BlogSubmissionPopup({ isOpen, onClose }: BlogSubmissionP
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    title,
                     email,
                     profileLink,
                     blogLink,
@@ -41,6 +43,7 @@ export default function BlogSubmissionPopup({ isOpen, onClose }: BlogSubmissionP
 
             setIsSubmitted(true);
             // Reset form
+            setTitle("");
             setEmail("");
             setProfileLink("");
             setBlogLink("");
@@ -59,6 +62,7 @@ export default function BlogSubmissionPopup({ isOpen, onClose }: BlogSubmissionP
 
     const handleClose = () => {
         if (!isSubmitting) {
+            setTitle("");
             setEmail("");
             setProfileLink("");
             setBlogLink("");
@@ -154,6 +158,23 @@ export default function BlogSubmissionPopup({ isOpen, onClose }: BlogSubmissionP
                                                     required
                                                     className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-lg font-mono text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#628bb2]/50 focus:ring-1 focus:ring-[#628bb2]/50 transition-all"
                                                     placeholder="https://x.com/username"
+                                                    disabled={isSubmitting}
+                                                />
+                                            </div>
+
+                                            {/* Blog Title */}
+                                            <div>
+                                                <label htmlFor="title" className="block font-mono text-sm text-white/80 mb-2">
+                                                    Blog Title *
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="title"
+                                                    value={title}
+                                                    onChange={(e) => setTitle(e.target.value)}
+                                                    required
+                                                    className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-lg font-mono text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#628bb2]/50 focus:ring-1 focus:ring-[#628bb2]/50 transition-all"
+                                                    placeholder="Debugging CUDA Out of Memory Errors"
                                                     disabled={isSubmitting}
                                                 />
                                             </div>
