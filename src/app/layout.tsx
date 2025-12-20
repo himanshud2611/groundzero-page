@@ -24,6 +24,27 @@ export const metadata: Metadata = {
     shortcut: "/logo.svg",
     apple: "/logo.svg",
   },
+  openGraph: {
+    title: "Ground Zero - Shaping the Frontier",
+    description: "Exploring the ideas and breakthroughs shaping the future of AI and tech",
+    url: "https://groundzeroai.in",
+    siteName: "Ground Zero",
+    images: [
+      {
+        url: "/g0.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ground Zero",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ground Zero - Shaping the Frontier",
+    description: "Exploring the ideas and breakthroughs shaping the future of AI and tech",
+    images: ["/g0.jpg"],
+  },
 };
 
 export default function RootLayout({

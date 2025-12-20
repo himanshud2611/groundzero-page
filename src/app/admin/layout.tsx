@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { adminAuthClient, isAdminEmail } from '@/lib/admin-auth';
 import type { User } from '@supabase/supabase-js';
 
@@ -12,6 +12,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const pathname = usePathname();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Skip auth check for login page
   const isLoginPage = pathname === '/admin/login';
@@ -78,8 +79,38 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Mobile Header */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-[#5e3535] text-white flex items-center justify-between px-4 z-40">
+        <h1 className="font-serif text-lg">GroundZero</h1>
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+        >
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            {sidebarOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Overlay */}
+      <AnimatePresence>
+        {sidebarOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="lg:hidden fixed inset-0 bg-black/50 z-40"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Sidebar */}
-      <aside className="fixed left-0 top-0 h-screen w-64 bg-[#5e3535] text-white flex flex-col">
+      <aside className={`fixed left-0 top-0 h-screen w-64 bg-[#5e3535] text-white flex flex-col z-50 transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Logo */}
         <div className="p-6 border-b border-white/10">
           <h1 className="font-serif text-2xl">GroundZero</h1>
@@ -93,7 +124,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               const isActive = pathname === item.href;
               return (
                 <li key={item.href}>
-                  <Link href={item.href}>
+                  <Link href={item.href} onClick={() => setSidebarOpen(false)}>
                     <motion.div
                       whileHover={{ x: 4 }}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl font-mono text-sm transition-colors ${
@@ -128,7 +159,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Main Content */}
-      <main className="ml-64 min-h-screen">
+      <main className="lg:ml-64 min-h-screen pt-14 lg:pt-0">
         {children}
       </main>
     </div>

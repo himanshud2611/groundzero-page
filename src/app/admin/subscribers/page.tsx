@@ -118,7 +118,7 @@ export default function SubscribersPage() {
             placeholder="Search by email..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#bf635c]/30"
+            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-xl font-mono text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf635c]/30"
           />
         </div>
         <div className="flex gap-2">
