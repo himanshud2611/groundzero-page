@@ -7,16 +7,18 @@ export function middleware(request: NextRequest) {
 
     // Handle admin subdomain
     if (hostname.startsWith('admin.')) {
-        // If accessing admin subdomain root, serve /admin
-        // If accessing admin subdomain with path, serve /admin/path
-        const adminPath = pathname === '/' ? '/admin' : `/admin${pathname}`;
+        // Skip if already has /admin prefix (avoid double rewrite)
+        if (pathname.startsWith('/admin')) {
+            return NextResponse.next();
+        }
 
-        // Rewrite to the admin routes
+        // Rewrite root to /admin, other paths to /admin/path
+        const adminPath = pathname === '/' ? '/admin' : `/admin${pathname}`;
         return NextResponse.rewrite(new URL(adminPath, request.url));
     }
 
-    // Block /admin routes on main domain (optional security)
-    if (pathname.startsWith('/admin') && !hostname.startsWith('admin.') && !hostname.includes('localhost')) {
+    // Block /admin routes on main domain (security)
+    if (pathname.startsWith('/admin') && !hostname.includes('localhost')) {
         return NextResponse.redirect(new URL('/', request.url));
     }
 
