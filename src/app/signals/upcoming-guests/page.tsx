@@ -12,6 +12,7 @@ const upcomingGuests = [
         project: "Titans, Atlas, Nested Learning",
         twitter: "behrouz_ali",
         image: "/ali-behrouz.jpg",
+        youtubeVideoId: "lGmKd9d8AuM", // Ali Behrouz episode
     },
     {
         name: "Ajinkya Mulay",
@@ -19,6 +20,7 @@ const upcomingGuests = [
         project: "Enabling training/inference of sparse models from the ground up with theoretical grounding",
         twitter: "ajinkya_mulay_",
         image: "/ajinkya-mulay.jpg",
+        youtubeVideoId: null, // No episode yet
     },
 ];
 
@@ -160,6 +162,26 @@ export default function UpcomingGuests() {
                                                 </a>
                                             </div>
                                         </div>
+
+                                        {/* Watch Now Button */}
+                                        {guest.youtubeVideoId && (
+                                            <motion.a
+                                                href={`https://www.youtube.com/watch?v=${guest.youtubeVideoId}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-2.5 px-5 py-2.5 mt-4 bg-gradient-to-r from-[#628bb2]/30 to-[#628bb2]/20 border border-[#628bb2]/40 rounded-lg backdrop-blur-sm hover:from-[#628bb2]/40 hover:to-[#628bb2]/30 hover:border-[#628bb2]/60 transition-all duration-300 group"
+                                                whileHover={{ scale: 1.02, y: -2 }}
+                                                whileTap={{ scale: 0.98 }}
+                                            >
+                                                <svg className="w-5 h-5 text-white/90" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                <span className="font-mono font-medium text-base text-white/90 group-hover:text-white transition-colors duration-200">
+                                                    Watch Now
+                                                </span>
+                                            </motion.a>
+                                        )}
                                     </div>
                                 </div>
                             </motion.div>
