@@ -5,6 +5,11 @@ export function middleware(request: NextRequest) {
     const hostname = request.headers.get('host') || '';
     const pathname = request.nextUrl.pathname;
 
+    // Skip API routes - don't rewrite them
+    if (pathname.startsWith('/api/')) {
+        return NextResponse.next();
+    }
+
     // Handle admin subdomain
     if (hostname.startsWith('admin.')) {
         // Skip if already has /admin prefix (avoid double rewrite)
@@ -28,6 +33,6 @@ export function middleware(request: NextRequest) {
 export const config = {
     matcher: [
         // Match all paths except static files and API routes
-        '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
     ],
 };
