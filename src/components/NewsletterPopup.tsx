@@ -3,34 +3,35 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { TIMINGS, STORAGE_KEYS } from '@/lib/constants';
 
 export default function NewsletterPopup() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     // Check if user has already dismissed
-    const lastDismissed = localStorage.getItem('newsletter_dismissed');
+    const lastDismissed = localStorage.getItem(STORAGE_KEYS.NEWSLETTER_DISMISSED);
 
-    // Show popup after 5 seconds if not dismissed in last 24 hours
+    // Show popup after configured delay if not dismissed recently
     if (lastDismissed) {
       const dismissedTime = parseInt(lastDismissed);
-      const hoursSinceDismiss = (Date.now() - dismissedTime) / (1000 * 60 * 60);
+      const timeSinceDismiss = Date.now() - dismissedTime;
 
-      if (hoursSinceDismiss < 24) {
-        return; // Don't show if dismissed in last 24 hours
+      if (timeSinceDismiss < TIMINGS.NEWSLETTER_DISMISS_DURATION) {
+        return; // Don't show if dismissed recently
       }
     }
 
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 5000); // 5 seconds
+    }, TIMINGS.NEWSLETTER_POPUP_DELAY);
 
     return () => clearTimeout(timer);
   }, []);
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem('newsletter_dismissed', Date.now().toString());
+    localStorage.setItem(STORAGE_KEYS.NEWSLETTER_DISMISSED, Date.now().toString());
   };
 
   return (

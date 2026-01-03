@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackgroundNoise from "@/components/common/BackgroundNoise";
@@ -58,13 +58,19 @@ export default function CommunityBlogs() {
     // All blogs come from Supabase (approved submissions)
     const allBlogs = newBlogs;
 
-    // Get unique categories from approved blogs
-    const categories = ["All", ...Array.from(new Set(newBlogs.map(blog => blog.category)))];
+    // Get unique categories from approved blogs (memoized)
+    const categories = useMemo(
+        () => ["All", ...Array.from(new Set(newBlogs.map(blog => blog.category)))],
+        [newBlogs]
+    );
 
-    // Filter blogs based on selected category
-    const filteredBlogs = selectedCategory === "All"
-        ? allBlogs
-        : allBlogs.filter(blog => blog.category === selectedCategory);
+    // Filter blogs based on selected category (memoized)
+    const filteredBlogs = useMemo(
+        () => selectedCategory === "All"
+            ? allBlogs
+            : allBlogs.filter(blog => blog.category === selectedCategory),
+        [selectedCategory, allBlogs]
+    );
 
     return (
         <div className="relative flex flex-col items-center min-h-screen w-full overflow-hidden bg-[#1a1a1a]">

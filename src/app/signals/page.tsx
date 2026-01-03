@@ -7,7 +7,7 @@ import LightsBackground from "@/components/common/LightsBackground";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedSignalsLogo from "@/components/AnimatedSignalsLogo";
-import { fadeInUp, fadeInUpDelayed, glowAnimation } from "@/lib/animations";
+import { fadeInUp, fadeInUpDelayed } from "@/lib/animations";
 
 const paragraphs = [
     {

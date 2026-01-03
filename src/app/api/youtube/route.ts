@@ -18,6 +18,33 @@ type CachedResponse = {
   lastUpdated: string;
 };
 
+// YouTube API response types
+interface YouTubePlaylistItem {
+  contentDetails: {
+    videoId: string;
+  };
+}
+
+interface YouTubeVideo {
+  id: string;
+  snippet: {
+    title: string;
+    description: string;
+    thumbnails: {
+      high: {
+        url: string;
+      };
+    };
+    publishedAt: string;
+  };
+  contentDetails: {
+    duration: string;
+  };
+  statistics: {
+    viewCount: string;
+  };
+}
+
 const cache = new Map<string, { timestamp: number; data: CachedResponse }>();
 
 export async function GET(request: Request) {
@@ -71,7 +98,7 @@ async function fetchPlaylistVideos(playlistId: string, apiKey: string): Promise<
   }
 
   const playlistData = await playlistResponse.json();
-  const videoIds = playlistData.items.map((item: any) => item.contentDetails.videoId).filter(Boolean);
+  const videoIds = playlistData.items.map((item: YouTubePlaylistItem) => item.contentDetails.videoId).filter(Boolean);
 
   if (videoIds.length === 0) {
     return {
@@ -91,7 +118,7 @@ async function fetchPlaylistVideos(playlistId: string, apiKey: string): Promise<
 
   const videosData = await videosResponse.json();
 
-  const videos = videosData.items.map((video: any) => ({
+  const videos = videosData.items.map((video: YouTubeVideo) => ({
     id: video.id,
     title: video.snippet.title,
     description: video.snippet.description,
