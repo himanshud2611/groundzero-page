@@ -104,7 +104,7 @@ export default function SubscribersPage() {
         </div>
         <button
           onClick={exportToCSV}
-          className="px-4 py-2 bg-[#5e3535] text-white font-mono text-sm rounded-xl hover:bg-[#4a2a2a] transition-colors"
+          className="px-4 py-2 bg-gray-100 text-gray-700 font-mono text-sm rounded-xl hover:bg-gray-200 transition-colors"
         >
           Export CSV
         </button>
