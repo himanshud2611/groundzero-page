@@ -12,6 +12,7 @@ const upcomingGuests = [
         project: "Titans, Atlas, Nested Learning",
         twitter: "behrouz_ali",
         image: "/ali-behrouz.jpg",
+        youtubeUrl: "https://youtu.be/3WqZIja7kdA",
     },
     {
         name: "Ajinkya Mulay",
@@ -159,6 +160,24 @@ export default function UpcomingGuests() {
                                                     @{guest.twitter}
                                                 </a>
                                             </div>
+                                            {guest.youtubeUrl && (
+                                                <div className="flex items-center gap-2 mt-1">
+                                                    <a
+                                                        href={guest.youtubeUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-flex items-center gap-2 font-mono text-base text-[#FF1D36] hover:text-[#ff4d5a] transition-colors duration-200"
+                                                    >
+                                                        <Image
+                                                            src="/youtube-logo.svg"
+                                                            alt="YouTube"
+                                                            width={20}
+                                                            height={20}
+                                                        />
+                                                        <span>Episode is live →</span>
+                                                    </a>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
