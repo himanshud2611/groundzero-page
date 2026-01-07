@@ -2,19 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { supabase, communityBlogsSupabase } from '@/lib/supabase';
+import { communityBlogsSupabase } from '@/lib/supabase';
 
 interface Stats {
-  totalSubscribers: number;
-  activeSubscribers: number;
   pendingBlogs: number;
   approvedBlogs: number;
 }
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<Stats>({
-    totalSubscribers: 0,
-    activeSubscribers: 0,
     pendingBlogs: 0,
     approvedBlogs: 0,
   });
@@ -23,16 +19,6 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        // Fetch newsletter subscribers stats
-        const { count: totalSubs } = await supabase
-          .from('newsletter_subscribers')
-          .select('*', { count: 'exact', head: true });
-
-        const { count: activeSubs } = await supabase
-          .from('newsletter_subscribers')
-          .select('*', { count: 'exact', head: true })
-          .eq('is_active', true);
-
         // Fetch blog submissions stats
         const { count: pendingBlogs } = await communityBlogsSupabase
           .from('blog_submissions')
@@ -45,8 +31,6 @@ export default function AdminDashboard() {
           .eq('status', 'approved');
 
         setStats({
-          totalSubscribers: totalSubs || 0,
-          activeSubscribers: activeSubs || 0,
           pendingBlogs: pendingBlogs || 0,
           approvedBlogs: approvedBlogs || 0,
         });
@@ -61,20 +45,6 @@ export default function AdminDashboard() {
   }, []);
 
   const statCards = [
-    {
-      title: 'Total Subscribers',
-      value: stats.totalSubscribers,
-      icon: '📧',
-      color: 'bg-blue-500',
-      href: '/admin/subscribers',
-    },
-    {
-      title: 'Active Subscribers',
-      value: stats.activeSubscribers,
-      icon: '✅',
-      color: 'bg-green-500',
-      href: '/admin/subscribers',
-    },
     {
       title: 'Pending Blogs',
       value: stats.pendingBlogs,
@@ -102,7 +72,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+      <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
         {statCards.map((card, index) => (
           <motion.a
             key={card.title}
@@ -136,14 +106,16 @@ export default function AdminDashboard() {
         <h2 className="font-serif text-lg md:text-xl text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
           <motion.a
-            href="/admin/subscribers"
+            href="https://groundzero1.substack.com/publish/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
             className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
           >
             <span className="text-xl md:text-2xl">📧</span>
             <div>
-              <p className="font-mono font-medium text-gray-900 text-sm md:text-base">View Subscribers</p>
-              <p className="font-mono text-xs text-gray-500">Manage newsletter list</p>
+              <p className="font-mono font-medium text-gray-900 text-sm md:text-base">Newsletter (Substack)</p>
+              <p className="font-mono text-xs text-gray-500">View subscribers on Substack</p>
             </div>
           </motion.a>
 
