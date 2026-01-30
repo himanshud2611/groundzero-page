@@ -182,8 +182,8 @@ export default function BlogsPage() {
     <div className="p-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-serif text-3xl text-gray-900">Blog Submissions</h1>
-        <p className="font-mono text-sm text-gray-500 mt-1">
+        <h1 className="font-serif text-3xl text-white/90">Blog Submissions</h1>
+        <p className="font-mono text-sm text-white/60 mt-1">
           Review and manage community blog submissions
         </p>
       </div>
@@ -199,13 +199,13 @@ export default function BlogsPage() {
               onClick={() => setFilter(f)}
               className={`px-4 py-2 font-mono text-sm rounded-xl transition-colors flex items-center gap-2 ${
                 filter === f
-                  ? 'bg-[#5e3535] text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-[#bf635c] text-white'
+                  : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10'
               }`}
             >
               {label}
               <span className={`text-xs px-2 py-0.5 rounded-full ${
-                filter === f ? 'bg-white/20' : 'bg-gray-200'
+                filter === f ? 'bg-white/20' : 'bg-white/10'
               }`}>
                 {count}
               </span>
@@ -217,12 +217,12 @@ export default function BlogsPage() {
       {/* Blog Cards Grid */}
       {loading ? (
         <div className="text-center py-12">
-          <div className="w-8 h-8 border-4 border-gray-200 border-t-[#bf635c] rounded-full animate-spin mx-auto" />
-          <p className="font-mono text-sm text-gray-500 mt-4">Loading submissions...</p>
+          <div className="w-8 h-8 border-4 border-white/20 border-t-[#bf635c] rounded-full animate-spin mx-auto" />
+          <p className="font-mono text-sm text-white/60 mt-4">Loading submissions...</p>
         </div>
       ) : filteredBlogs.length === 0 ? (
-        <div className="text-center py-12 bg-white rounded-2xl border border-gray-100">
-          <p className="font-mono text-gray-500">No {filter === 'all' ? '' : filter} submissions found</p>
+        <div className="text-center py-12 bg-[#1a1a1a] rounded-2xl border border-white/10">
+          <p className="font-mono text-white/60">No {filter === 'all' ? '' : filter} submissions found</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -232,7 +232,7 @@ export default function BlogsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+              className="bg-[#1a1a1a] rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all"
             >
               {/* Status & Category Badge */}
               <div className="flex items-center justify-between mb-4">
@@ -246,14 +246,14 @@ export default function BlogsPage() {
                     </span>
                   )}
                 </div>
-                <span className="font-mono text-xs text-gray-400">
+                <span className="font-mono text-xs text-white/40">
                   {new Date(blog.submitted_at).toLocaleDateString()}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="font-serif text-lg text-gray-900 mb-2 line-clamp-2">
-                {blog.title || <span className="text-gray-400 italic">TBD</span>}
+              <h3 className="font-serif text-lg text-white/90 mb-2 line-clamp-2">
+                {blog.title || <span className="text-white/40 italic">TBD</span>}
               </h3>
 
               {/* Links */}
@@ -262,7 +262,7 @@ export default function BlogsPage() {
                   href={blog.blog_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block font-mono text-xs text-gray-500 hover:text-[#bf635c] truncate transition-colors"
+                  className="block font-mono text-xs text-white/60 hover:text-[#bf635c] truncate transition-colors"
                 >
                   📝 {blog.blog_link}
                 </a>
@@ -279,16 +279,16 @@ export default function BlogsPage() {
 
               {/* Actions */}
               {blog.status === 'pending' && (
-                <div className="flex gap-2 pt-4 border-t border-gray-100">
+                <div className="flex gap-2 pt-4 border-t border-white/10">
                   <button
                     onClick={() => openApprovalModal(blog)}
-                    className="flex-1 py-2 bg-green-50 text-green-600 font-mono text-sm rounded-xl hover:bg-green-100 transition-colors"
+                    className="flex-1 py-2 bg-green-500/20 text-green-400 font-mono text-sm rounded-xl hover:bg-green-500/30 transition-colors border border-green-500/30"
                   >
                     Approve
                   </button>
                   <button
                     onClick={() => handleReject(blog.id)}
-                    className="flex-1 py-2 bg-red-50 text-red-600 font-mono text-sm rounded-xl hover:bg-red-100 transition-colors"
+                    className="flex-1 py-2 bg-red-500/20 text-red-400 font-mono text-sm rounded-xl hover:bg-red-500/30 transition-colors border border-red-500/30"
                   >
                     Reject
                   </button>
@@ -296,10 +296,10 @@ export default function BlogsPage() {
               )}
 
               {blog.status === 'approved' && (
-                <div className="flex gap-2 pt-4 border-t border-gray-100">
+                <div className="flex gap-2 pt-4 border-t border-white/10">
                   <button
                     onClick={() => handleReject(blog.id)}
-                    className="flex-1 py-2 bg-red-50 text-red-600 font-mono text-sm rounded-xl hover:bg-red-100 transition-colors"
+                    className="flex-1 py-2 bg-red-500/20 text-red-400 font-mono text-sm rounded-xl hover:bg-red-500/30 transition-colors border border-red-500/30"
                   >
                     Remove from Community
                   </button>
@@ -307,10 +307,10 @@ export default function BlogsPage() {
               )}
 
               {blog.status === 'rejected' && (
-                <div className="flex gap-2 pt-4 border-t border-gray-100">
+                <div className="flex gap-2 pt-4 border-t border-white/10">
                   <button
                     onClick={() => openApprovalModal(blog)}
-                    className="flex-1 py-2 bg-blue-50 text-blue-600 font-mono text-sm rounded-xl hover:bg-blue-100 transition-colors"
+                    className="flex-1 py-2 bg-blue-500/20 text-blue-400 font-mono text-sm rounded-xl hover:bg-blue-500/30 transition-colors border border-blue-500/30"
                   >
                     Review Again
                   </button>
@@ -318,7 +318,7 @@ export default function BlogsPage() {
               )}
 
               {blog.reviewed_at && (
-                <p className="font-mono text-xs text-gray-400 mt-4">
+                <p className="font-mono text-xs text-white/40 mt-4">
                   Reviewed: {new Date(blog.reviewed_at).toLocaleDateString()}
                 </p>
               )}
@@ -347,15 +347,15 @@ export default function BlogsPage() {
               exit={{ opacity: 0, scale: 0.95 }}
               className="fixed inset-0 z-50 flex items-center justify-center p-4"
             >
-              <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6" onClick={e => e.stopPropagation()}>
-                <h2 className="font-serif text-xl text-gray-900 mb-2">Approve Blog</h2>
-                <p className="font-mono text-sm text-gray-500 mb-6">
+              <div className="bg-[#1a1a1a] rounded-2xl shadow-xl w-full max-w-md p-6 border border-white/20" onClick={e => e.stopPropagation()}>
+                <h2 className="font-serif text-xl text-white/90 mb-2">Approve Blog</h2>
+                <p className="font-mono text-sm text-white/60 mb-6">
                   Set title and category before approving
                 </p>
 
                 {/* Blog Info */}
-                <div className="bg-gray-50 rounded-xl p-4 mb-6">
-                  <p className="font-mono text-sm text-gray-500">
+                <div className="bg-white/5 rounded-xl p-4 mb-6 border border-white/10">
+                  <p className="font-mono text-sm text-white/60">
                     by {extractHandle(approvalModal.blog.profile_link)}
                   </p>
                   <a
@@ -370,7 +370,7 @@ export default function BlogsPage() {
 
                 {/* Title Input */}
                 <div className="mb-6">
-                  <label className="block font-mono text-sm text-gray-600 mb-2">
+                  <label className="block font-mono text-sm text-white/70 mb-2">
                     Blog Title *
                   </label>
                   <input
@@ -378,13 +378,13 @@ export default function BlogsPage() {
                     value={editableTitle}
                     onChange={(e) => setEditableTitle(e.target.value)}
                     placeholder="Enter blog title..."
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl font-mono text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bf635c]/30"
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl font-mono text-sm text-white/90 placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#bf635c]/50"
                   />
                 </div>
 
                 {/* Category Selection */}
                 <div className="mb-6">
-                  <label className="block font-mono text-sm text-gray-600 mb-3">
+                  <label className="block font-mono text-sm text-white/70 mb-3">
                     Category *
                   </label>
 
@@ -397,8 +397,8 @@ export default function BlogsPage() {
                             onClick={() => setSelectedCategory(cat)}
                             className={`px-3 py-1.5 rounded-full font-mono text-xs transition-colors ${
                               selectedCategory === cat
-                                ? 'bg-[#5e3535] text-white'
-                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                ? 'bg-[#bf635c] text-white'
+                                : 'bg-white/5 text-white/70 hover:bg-white/10 border border-white/10'
                             }`}
                           >
                             {cat}
@@ -422,7 +422,7 @@ export default function BlogsPage() {
                         value={customCategory}
                         onChange={(e) => setCustomCategory(e.target.value)}
                         placeholder="Enter new category..."
-                        className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#bf635c]/30"
+                        className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl font-mono text-sm text-white/90 placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#bf635c]/50"
                         autoFocus
                       />
                       <button
@@ -430,7 +430,7 @@ export default function BlogsPage() {
                           setShowCustomInput(false);
                           setCustomCategory('');
                         }}
-                        className="font-mono text-sm text-gray-500 hover:underline"
+                        className="font-mono text-sm text-white/60 hover:underline"
                       >
                         ← Back to existing categories
                       </button>
@@ -442,7 +442,7 @@ export default function BlogsPage() {
                 <div className="flex gap-3">
                   <button
                     onClick={closeApprovalModal}
-                    className="flex-1 py-2.5 font-mono text-sm text-gray-600 hover:bg-gray-100 rounded-xl transition-colors"
+                    className="flex-1 py-2.5 font-mono text-sm text-white/70 hover:bg-white/10 rounded-xl transition-colors border border-white/10"
                   >
                     Cancel
                   </button>

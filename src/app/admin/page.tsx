@@ -65,8 +65,8 @@ export default function AdminDashboard() {
     <div className="p-4 md:p-8">
       {/* Header */}
       <div className="mb-6 md:mb-8">
-        <h1 className="font-serif text-2xl md:text-3xl text-gray-900">Dashboard</h1>
-        <p className="font-mono text-sm text-gray-500 mt-1">
+        <h1 className="font-serif text-2xl md:text-3xl text-white/90">Dashboard</h1>
+        <p className="font-mono text-sm text-white/60 mt-1">
           Welcome to the GroundZero admin panel
         </p>
       </div>
@@ -83,18 +83,18 @@ export default function AdminDashboard() {
             whileHover={{ y: -4 }}
             className="block"
           >
-            <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+            <div className="bg-[#1a1a1a] rounded-xl md:rounded-2xl p-4 md:p-5 border border-white/10 hover:border-white/20 transition-all">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-lg md:text-xl">{card.icon}</span>
                 <div className={`w-2 h-2 rounded-full ${card.color}`} />
               </div>
               <div>
                 {loading ? (
-                  <div className="h-6 md:h-7 w-10 md:w-12 bg-gray-200 rounded animate-pulse" />
+                  <div className="h-6 md:h-7 w-10 md:w-12 bg-white/10 rounded animate-pulse" />
                 ) : (
-                  <p className="font-serif text-xl md:text-2xl text-gray-900">{card.value}</p>
+                  <p className="font-serif text-xl md:text-2xl text-white/90">{card.value}</p>
                 )}
-                <p className="font-mono text-[10px] md:text-xs text-gray-500 mt-1">{card.title}</p>
+                <p className="font-mono text-[10px] md:text-xs text-white/60 mt-1">{card.title}</p>
               </div>
             </div>
           </motion.a>
@@ -102,32 +102,32 @@ export default function AdminDashboard() {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100">
-        <h2 className="font-serif text-lg md:text-xl text-gray-900 mb-4">Quick Actions</h2>
+      <div className="bg-[#1a1a1a] rounded-xl md:rounded-2xl p-4 md:p-6 border border-white/10">
+        <h2 className="font-serif text-lg md:text-xl text-white/90 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
           <motion.a
             href="https://groundzero1.substack.com/publish/dashboard"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors border border-white/10"
           >
             <span className="text-xl md:text-2xl">📧</span>
             <div>
-              <p className="font-mono font-medium text-gray-900 text-sm md:text-base">Newsletter (Substack)</p>
-              <p className="font-mono text-xs text-gray-500">View subscribers on Substack</p>
+              <p className="font-mono font-medium text-white/90 text-sm md:text-base">Newsletter (Substack)</p>
+              <p className="font-mono text-xs text-white/60">View subscribers on Substack</p>
             </div>
           </motion.a>
 
           <motion.a
             href="/admin/blogs"
             whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors border border-white/10"
           >
             <span className="text-xl md:text-2xl">📝</span>
             <div>
-              <p className="font-mono font-medium text-gray-900 text-sm md:text-base">Review Blogs</p>
-              <p className="font-mono text-xs text-gray-500">Approve or reject submissions</p>
+              <p className="font-mono font-medium text-white/90 text-sm md:text-base">Review Blogs</p>
+              <p className="font-mono text-xs text-white/60">Approve or reject submissions</p>
             </div>
           </motion.a>
 
@@ -136,12 +136,12 @@ export default function AdminDashboard() {
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+            className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-colors border border-white/10"
           >
             <span className="text-xl md:text-2xl">⚡</span>
             <div>
-              <p className="font-mono font-medium text-gray-900 text-sm md:text-base">Signals (Tally)</p>
-              <p className="font-mono text-xs text-gray-500">View in Tally dashboard</p>
+              <p className="font-mono font-medium text-white/90 text-sm md:text-base">Signals (Tally)</p>
+              <p className="font-mono text-xs text-white/60">View in Tally dashboard</p>
             </div>
           </motion.a>
         </div>

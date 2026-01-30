@@ -7,8 +7,8 @@ export default function SignalsPage() {
     <div className="p-4 md:p-8">
       {/* Header */}
       <div className="mb-6 md:mb-8">
-        <h1 className="font-serif text-2xl md:text-3xl text-gray-900">Signals</h1>
-        <p className="font-mono text-sm text-gray-500 mt-1">
+        <h1 className="font-serif text-2xl md:text-3xl text-white/90">Signals</h1>
+        <p className="font-mono text-sm text-white/60 mt-1">
           Signals submissions via Tally
         </p>
       </div>
@@ -17,13 +17,13 @@ export default function SignalsPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-blue-50 border border-blue-200 rounded-xl md:rounded-2xl p-4 md:p-6 mb-6"
+        className="bg-blue-500/10 border border-blue-500/30 rounded-xl md:rounded-2xl p-4 md:p-6 mb-6"
       >
         <div className="flex items-start gap-3 md:gap-4">
           <span className="text-xl md:text-2xl">📊</span>
           <div>
-            <h3 className="font-mono font-medium text-blue-800 mb-2 text-sm md:text-base">Managed via Tally</h3>
-            <p className="font-mono text-xs md:text-sm text-blue-700 mb-4">
+            <h3 className="font-mono font-medium text-blue-400 mb-2 text-sm md:text-base">Managed via Tally</h3>
+            <p className="font-mono text-xs md:text-sm text-blue-300/80 mb-4">
               View and manage all responses in your Tally dashboard.
             </p>
             <a
@@ -44,21 +44,21 @@ export default function SignalsPage() {
           href="https://groundzeroai.in/signals"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-md transition-shadow"
+          className="bg-[#1a1a1a] rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all"
         >
           <span className="text-2xl mb-3 block">📄</span>
-          <h3 className="font-serif text-lg text-gray-900 mb-1">Signals Page</h3>
-          <p className="font-mono text-sm text-gray-500">View the public signals page</p>
+          <h3 className="font-serif text-lg text-white/90 mb-1">Signals Page</h3>
+          <p className="font-mono text-sm text-white/60">View the public signals page</p>
         </a>
         <a
           href="https://groundzeroai.in/signals/upcoming-guests"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-md transition-shadow"
+          className="bg-[#1a1a1a] rounded-2xl border border-white/10 p-6 hover:border-white/20 transition-all"
         >
           <span className="text-2xl mb-3 block">👥</span>
-          <h3 className="font-serif text-lg text-gray-900 mb-1">Upcoming Guests</h3>
-          <p className="font-mono text-sm text-gray-500">View upcoming guests page</p>
+          <h3 className="font-serif text-lg text-white/90 mb-1">Upcoming Guests</h3>
+          <p className="font-mono text-sm text-white/60">View upcoming guests page</p>
         </a>
       </div>
     </div>

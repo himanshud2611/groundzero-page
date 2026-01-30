@@ -77,9 +77,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#0f0f0f]">
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-[#5e3535] text-white flex items-center justify-between px-4 z-40">
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-14 bg-[#1a1a1a] text-white flex items-center justify-between px-4 z-40 border-b border-white/10">
         <h1 className="font-serif text-lg">GroundZero</h1>
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -109,7 +109,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </AnimatePresence>
 
       {/* Sidebar */}
-      <aside className={`fixed left-0 top-0 h-screen w-64 bg-[#5e3535] text-white flex flex-col z-50 transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`fixed left-0 top-0 h-screen w-64 bg-[#1a1a1a] text-white flex flex-col z-50 transition-transform duration-300 lg:translate-x-0 border-r border-white/10 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         {/* Logo */}
         <div className="p-6 border-b border-white/10">
           <h1 className="font-serif text-2xl">GroundZero</h1>
