@@ -18,9 +18,9 @@ export default function Home() {
         <HeroBackground />
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center gap-5 md:gap-8 pt-28 md:pt-12 pb-20 md:pb-20 px-4 md:px-0">
-          <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center">
-            <h1 className="flex flex-col items-center gap-px font-serif text-[56px] md:text-[68px] leading-14 md:leading-18 tracking-[-3.92px] md:tracking-tighter">
+        <div className="relative z-10 flex flex-col items-center gap-5 md:gap-8 pt-28 md:pt-12 pb-20 md:pb-20 px-4 md:px-0 w-full max-w-[100vw] overflow-hidden">
+          <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center w-full px-2">
+            <h1 className="flex flex-col items-center gap-px font-serif text-[42px] sm:text-[56px] md:text-[68px] leading-[1.1] md:leading-18 tracking-[-2px] md:tracking-tighter">
               <motion.span
                 className="w-full max-w-[342px] md:w-max md:max-w-none text-white"
                 initial={{ opacity: 0, y: 20 }}
@@ -39,7 +39,7 @@ export default function Home() {
               </motion.span>
             </h1>
             <motion.p
-              className="w-full max-w-[337px] md:max-w-[620px] px-0 font-mono font-normal text-[14px] md:text-lg leading-normal md:leading-normal text-white/65 tracking-[-0.84px] md:tracking-tight"
+              className="w-full max-w-[320px] md:max-w-[620px] px-0 font-mono font-normal text-[13px] md:text-lg leading-snug md:leading-normal text-white/65 tracking-[-0.6px] md:tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
@@ -48,11 +48,11 @@ export default function Home() {
             </motion.p>
           </div>
 
-          <div className="flex flex-col items-center gap-3 md:gap-4">
+          <div className="flex flex-col items-center gap-3 md:gap-4 w-full px-4">
             {/* Launch Soon Card */}
-            <Link href="/launch-soon">
+            <Link href="/launch-soon" className="w-full max-w-[320px] md:w-auto md:max-w-none">
               <motion.div
-                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-[#f4d37a] shadow-[0_0_18px_rgba(244,211,122,0.45),0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-[#f4d37a] shadow-[0_0_18px_rgba(244,211,122,0.45),0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer w-full md:w-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
@@ -85,9 +85,9 @@ export default function Home() {
             </Link>
 
             {/* Signals Card */}
-            <Link href="/signals">
+            <Link href="/signals" className="w-full max-w-[320px] md:w-auto md:max-w-none">
               <motion.div
-                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-black/60 shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-black/60 shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer w-full md:w-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
@@ -106,9 +106,9 @@ export default function Home() {
             </Link>
 
             {/* Community Blogs Card */}
-            <Link href="/spotlights/community-blogs">
+            <Link href="/spotlights/community-blogs" className="w-full max-w-[320px] md:w-auto md:max-w-none">
               <motion.div
-                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-black/60 shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-black/60 shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer w-full md:w-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
@@ -128,7 +128,7 @@ export default function Home() {
           </div>
 
           <motion.div
-            className="flex flex-row items-start gap-2.5"
+            className="flex flex-row items-start justify-center flex-wrap gap-2.5 w-full px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
