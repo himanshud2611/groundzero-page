@@ -18,7 +18,7 @@ export default function Home() {
         <HeroBackground />
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center gap-6 md:gap-10 pt-24 md:pt-12 pb-20 md:pb-20 px-4 md:px-0">
+        <div className="relative z-10 flex flex-col items-center gap-5 md:gap-8 pt-28 md:pt-12 pb-20 md:pb-20 px-4 md:px-0">
           <div className="flex flex-col items-center justify-center gap-4 md:gap-6 text-center">
             <h1 className="flex flex-col items-center gap-px font-serif text-[56px] md:text-[68px] leading-14 md:leading-18 tracking-[-3.92px] md:tracking-tighter">
               <motion.span
@@ -48,7 +48,7 @@ export default function Home() {
             </motion.p>
           </div>
 
-          <div className="flex flex-col items-center gap-4 md:gap-5">
+          <div className="flex flex-col items-center gap-3 md:gap-4">
             {/* Launch Soon Card */}
             <Link href="/launch-soon">
               <motion.div

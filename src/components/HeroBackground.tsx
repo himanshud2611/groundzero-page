@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
@@ -10,6 +10,7 @@ const meteorTimings = Array.from({ length: 20 }, () => ({
 }));
 
 export default function HeroBackground() {
+  const [enableEffects, setEnableEffects] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -21,6 +22,14 @@ export default function HeroBackground() {
   const mouseYInverted = useMotionValue(0);
   const cloudRightX = useSpring(mouseXInverted, { damping: 30, stiffness: 80 });
   const cloudRightY = useSpring(mouseYInverted, { damping: 30, stiffness: 80 });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const update = () => setEnableEffects(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
@@ -39,7 +48,7 @@ export default function HeroBackground() {
   return (
     <div
       className="absolute inset-0 overflow-hidden"
-      onMouseMove={handleMouseMove}
+      onMouseMove={enableEffects ? handleMouseMove : undefined}
     >
       {/* SVG Filter Definition */}
       <svg width="0" height="0" style={{ position: 'absolute' }}>
@@ -66,68 +75,78 @@ export default function HeroBackground() {
         className="absolute inset-0 bg-linear-to-b from-[#bf635c] via-[#e79c7f] via-60% to-[#fcf7d9] overflow-hidden"
         style={{ filter: 'url(#figmaNoiseFilter)', WebkitFilter: 'url(#figmaNoiseFilter)' }}
       >
-        {/* Cloud images - centered with creative parallax */}
-        <motion.div
-          className="absolute -left-1/5 -bottom-44 md:-bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
-          style={{
-            x: cloudLeftX,
-            y: cloudLeftY,
-          }}
-        >
-          <Image
-            src="/clouds.png"
-            alt=""
-            fill
-            className="object-cover object-center pointer-events-none"
-          />
-        </motion.div>
-        <motion.div
-          className="absolute -right-1/5 -bottom-44 md:-bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
-          style={{
-            x: cloudRightX,
-            y: cloudRightY,
-          }}
-          animate={{
-            x: [0, -5, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        >
-          <Image
-            src="/clouds.png"
-            alt=""
-            fill
-            className="object-cover object-center pointer-events-none"
-          />
-        </motion.div>
+        {enableEffects && (
+          <>
+            {/* Cloud images - centered with creative parallax */}
+            <motion.div
+              className="absolute -left-1/5 -bottom-44 md:-bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
+              style={{
+                x: cloudLeftX,
+                y: cloudLeftY,
+              }}
+            >
+              <Image
+                src="/clouds.png"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 1038px"
+                quality={60}
+                priority
+                className="object-cover object-center pointer-events-none"
+              />
+            </motion.div>
+            <motion.div
+              className="absolute -right-1/5 -bottom-44 md:-bottom-32 w-[1038px] h-[461px] 2xl:scale-150 opacity-90"
+              style={{
+                x: cloudRightX,
+                y: cloudRightY,
+              }}
+              animate={{
+                x: [0, -5, 0],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            >
+              <Image
+                src="/clouds.png"
+                alt=""
+                fill
+                sizes="(max-width: 1024px) 100vw, 1038px"
+                quality={60}
+                className="object-cover object-center pointer-events-none"
+              />
+            </motion.div>
+          </>
+        )}
 
         {/* Meteor shower effect */}
-        {meteorTimings.map((timing, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-0.5 h-[60px] bg-linear-to-b from-white/60 to-transparent rounded-full"
-            style={{
-              left: `${10 + i * 12}%`,
-              top: `-10%`,
-              rotate: -225,
-            }}
-            animate={{
-              x: [0, 300],
-              y: [0, 300],
-              opacity: [0, 0.6, 0],
-            }}
-            transition={{
-              duration: timing.duration,
-              repeat: Infinity,
-              repeatDelay: timing.repeatDelay,
-              ease: 'easeIn',
-              delay: i * 0.8,
-            }}
-          />
-        ))}
+        {enableEffects &&
+          meteorTimings.map((timing, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-0.5 h-[60px] bg-linear-to-b from-white/60 to-transparent rounded-full"
+              style={{
+                left: `${10 + i * 12}%`,
+                top: `-10%`,
+                rotate: -225,
+              }}
+              animate={{
+                x: [0, 300],
+                y: [0, 300],
+                opacity: [0, 0.6, 0],
+              }}
+              transition={{
+                duration: timing.duration,
+                repeat: Infinity,
+                repeatDelay: timing.repeatDelay,
+                ease: 'easeIn',
+                delay: i * 0.8,
+              }}
+            />
+          ))}
       </div>
     </div>
   );
