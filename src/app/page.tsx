@@ -48,125 +48,24 @@ export default function Home() {
             </motion.p>
           </div>
 
-          <motion.div
-            className="flex flex-row items-start gap-2.5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-          >
-            {/* Youtube/Primary Button */}
-            <a href="https://www.youtube.com/@Ground_ZeroYT" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-max px-[22px] md:px-6 gap-2.5 md:gap-4 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35)',
-                }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <span className="relative font-mono font-medium text-[16px] md:text-xl leading-normal text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
-                  Youtube
-                </span>
-                <Image
-                  src="/youtube-logo.svg"
-                  alt="Youtube"
-                  width={22}
-                  height={22}
-                  className="relative object-contain opacity-80 md:w-7 md:h-7"
-                />
-              </motion.button>
-            </a>
-
-            {/* Twitter/X Button */}
-            <a href="https://x.com/groundzero_twt" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35)',
-                }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <Image
-                  src="/twitter-logo.svg"
-                  alt="Twitter"
-                  width={22}
-                  height={22}
-                  className="relative object-contain opacity-80 md:w-7 md:h-7"
-                />
-              </motion.button>
-            </a>
-
-            {/* Substack Button */}
-            <a href="https://groundzero1.substack.com/" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35)',
-                }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <Image
-                  src="/substack-icon.svg"
-                  alt="Substack"
-                  width={18}
-                  height={18}
-                  className="relative object-contain opacity-80 md:w-6 md:h-6"
-                />
-              </motion.button>
-            </a>
-
-            {/* Discord Button */}
-            <a href="https://discord.gg/aChCV3cbyn" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-11 md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35)',
-                }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <Image
-                  src="/discord-logo.svg"
-                  alt="Discord"
-                  width={24}
-                  height={24}
-                  className="relative object-contain opacity-80 md:w-8 md:h-8"
-                />
-              </motion.button>
-            </a>
-
-            {/* Instagram Button */}
-            <a href="https://instagram.com/groundzero_ig" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255, 255, 255, 0.35)',
-                }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <Image
-                  src="/instagram-logo.svg"
-                  alt="Instagram"
-                  width={22}
-                  height={22}
-                  className="relative object-contain opacity-80 md:size-6"
-                />
-              </motion.button>
-            </a>
-          </motion.div>
+          {/* Launch Soon Card */}
+          <Link href="/launch-soon">
+            <motion.div
+              className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-[#2b1b1b] rounded-full border border-[#f4d37a] shadow-[0_0_18px_rgba(244,211,122,0.45),0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
+              whileHover={{
+                scale: 1.01,
+                boxShadow: '0 0 24px rgba(244,211,122,0.7), 0 12px 32px rgba(0,0,0,0.3)',
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="font-mono font-semibold text-[16px] md:text-[18px] text-[#f7e2d3] tracking-[-0.8px] md:tracking-tight">
+                LAUNCH SOON →
+              </span>
+            </motion.div>
+          </Link>
 
           {/* Signals Card */}
           <Link href="/signals">
@@ -239,6 +138,126 @@ export default function Home() {
               </span>
             </motion.div>
           </Link>
+
+          <motion.div
+            className="flex flex-row items-start gap-2.5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+          >
+            {/* Youtube/Primary Button */}
+            <a href="https://www.youtube.com/@Ground_ZeroYT" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="relative flex items-center justify-center h-10 md:h-12 w-max px-[22px] md:px-6 gap-2.5 md:gap-4 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                whileHover={{
+                  scale: 1.01,
+                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <span className="relative font-mono font-medium text-[16px] md:text-xl leading-normal text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
+                  Youtube
+                </span>
+                <Image
+                  src="/youtube-logo.svg"
+                  alt="Youtube"
+                  width={22}
+                  height={22}
+                  className="relative object-contain opacity-80 md:w-7 md:h-7"
+                />
+              </motion.button>
+            </a>
+
+            {/* Twitter/X Button */}
+            <a href="https://x.com/groundzero_twt" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                whileHover={{
+                  scale: 1.01,
+                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/twitter-logo.svg"
+                  alt="Twitter"
+                  width={22}
+                  height={22}
+                  className="relative object-contain opacity-80 md:w-7 md:h-7"
+                />
+              </motion.button>
+            </a>
+
+            {/* Substack Button */}
+            <a href="https://groundzero1.substack.com/" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                whileHover={{
+                  scale: 1.01,
+                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/substack-icon.svg"
+                  alt="Substack"
+                  width={18}
+                  height={18}
+                  className="relative object-contain opacity-80 md:w-6 md:h-6"
+                />
+              </motion.button>
+            </a>
+
+            {/* Discord Button */}
+            <a href="https://discord.gg/aChCV3cbyn" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="relative flex items-center justify-center h-10 md:h-12 w-11 md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                whileHover={{
+                  scale: 1.01,
+                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/discord-logo.svg"
+                  alt="Discord"
+                  width={24}
+                  height={24}
+                  className="relative object-contain opacity-80 md:w-8 md:h-8"
+                />
+              </motion.button>
+            </a>
+
+            {/* Instagram Button */}
+            <a href="https://instagram.com/groundzero_ig" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                whileHover={{
+                  scale: 1.01,
+                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/instagram-logo.svg"
+                  alt="Instagram"
+                  width={22}
+                  height={22}
+                  className="relative object-contain opacity-80 md:size-6"
+                />
+              </motion.button>
+            </a>
+          </motion.div>
         </div>
       </main>
       <Footer fixed color="text-[#C88367]/60" />

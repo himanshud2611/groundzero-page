@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    // Ensure Turbopack only scans this repo, not the whole home directory.
+    root: path.resolve(__dirname),
+  },
   images: {
     remotePatterns: [
       {

@@ -1,5 +1,3 @@
-"use client";
-
 interface AnimatedSignalsLogoProps {
     size?: number;
     className?: string;

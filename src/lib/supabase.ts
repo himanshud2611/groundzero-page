@@ -40,6 +40,16 @@ CREATE TABLE newsletter_subscribers (
 
 CREATE INDEX idx_newsletter_email ON newsletter_subscribers(email);
 ALTER TABLE newsletter_subscribers DISABLE ROW LEVEL SECURITY;
+
+CREATE TABLE launch_waitlist (
+  id TEXT PRIMARY KEY DEFAULT lower(substr(md5(random()::text || clock_timestamp()::text), 1, 10)),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  source VARCHAR(50) DEFAULT 'launch-soon',
+  created_at TIMESTAMP DEFAULT date_trunc('minute', NOW())
+);
+
+CREATE INDEX idx_launch_waitlist_email ON launch_waitlist(email);
+ALTER TABLE launch_waitlist DISABLE ROW LEVEL SECURITY;
 */
 
 /*
