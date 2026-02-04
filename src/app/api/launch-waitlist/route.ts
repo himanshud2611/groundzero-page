@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { isValidEmail, normalizeEmail } from "@/lib/validation";
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseHost = supabaseUrl ? new URL(supabaseUrl).host : "unknown";
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -24,6 +27,16 @@ export async function POST(request: Request) {
         return NextResponse.json(
           { error: "This email is already on the waitlist." },
           { status: 409 }
+        );
+      }
+      if (error.code === "PGRST205") {
+        return NextResponse.json(
+          {
+            error:
+              `Database error: ${error.message} (Code: ${error.code}). ` +
+              `Check that the table exists in project: ${supabaseHost}`,
+          },
+          { status: 500 }
         );
       }
       // Return the actual error message for debugging (remove this later)
