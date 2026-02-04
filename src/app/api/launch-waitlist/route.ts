@@ -19,22 +19,25 @@ export async function POST(request: Request) {
       .insert({ email, source: "launch-soon" });
 
     if (error) {
+      console.error("Supabase error:", error); // Log the actual error
       if (error.code === "23505") {
         return NextResponse.json(
           { error: "This email is already on the waitlist." },
           { status: 409 }
         );
       }
+      // Return the actual error message for debugging (remove this later)
       return NextResponse.json(
-        { error: "Unable to join the waitlist right now." },
+        { error: `Database error: ${error.message} (Code: ${error.code})` },
         { status: 500 }
       );
     }
 
     return NextResponse.json({ ok: true });
-  } catch {
+  } catch (err: any) {
+    console.error("API error:", err);
     return NextResponse.json(
-      { error: "Unable to join the waitlist right now." },
+      { error: `Server error: ${err?.message || "Unknown error"}` },
       { status: 500 }
     );
   }
