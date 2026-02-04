@@ -51,17 +51,33 @@ export default function Home() {
           {/* Launch Soon Card */}
           <Link href="/launch-soon">
             <motion.div
-              className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-[#2b1b1b] rounded-full border border-[#f4d37a] shadow-[0_0_18px_rgba(244,211,122,0.45),0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer"
+              className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-[#f4d37a] shadow-[0_0_18px_rgba(244,211,122,0.45),0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
               whileHover={{
                 scale: 1.01,
+                backgroundColor: 'rgba(255, 255, 255, 0.65)',
                 boxShadow: '0 0 24px rgba(244,211,122,0.7), 0 12px 32px rgba(0,0,0,0.3)',
               }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="font-mono font-semibold text-[16px] md:text-[18px] text-[#f7e2d3] tracking-[-0.8px] md:tracking-tight">
+              {/* NEW Badge */}
+              <motion.span
+                className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide"
+                animate={{
+                  opacity: [1, 0.6, 1],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              >
+                NEW
+              </motion.span>
+              <span className="font-mono font-semibold text-[16px] md:text-[18px] text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
                 LAUNCH SOON →
               </span>
             </motion.div>
@@ -82,21 +98,6 @@ export default function Home() {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* NEW Badge */}
-              <motion.span
-                className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide"
-                animate={{
-                  opacity: [1, 0.6, 1],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                NEW
-              </motion.span>
               <span className="font-mono font-medium text-[16px] md:text-[18px] text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
                 Introducing SIGNALS →
               </span>
@@ -118,21 +119,6 @@ export default function Home() {
               }}
               whileTap={{ scale: 0.98 }}
             >
-              {/* NEW Badge */}
-              <motion.span
-                className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide"
-                animate={{
-                  opacity: [1, 0.6, 1],
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
-                NEW
-              </motion.span>
               <span className="font-mono font-medium text-[16px] md:text-[18px] text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
                 Introducing Community Blogs →
               </span>
