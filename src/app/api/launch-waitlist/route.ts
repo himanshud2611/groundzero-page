@@ -1,9 +1,17 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { supabaseAdmin } from "@/lib/supabase";
 import { isValidEmail, normalizeEmail } from "@/lib/validation";
 
 export async function POST(request: Request) {
   try {
+    if (!supabaseAdmin) {
+      console.error("Supabase Admin client not initialized. Check SUPABASE_SERVICE_ROLE_KEY.");
+      return NextResponse.json(
+        { error: "Server configuration error." },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const email = normalizeEmail(String(body?.email ?? ""));
 
@@ -14,7 +22,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from("launch_waitlist")
       .insert({ email, source: "launch-soon" });
 

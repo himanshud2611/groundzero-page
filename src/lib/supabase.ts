@@ -14,6 +14,14 @@ const newsletterUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const newsletterAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 export const supabase = createClient(newsletterUrl, newsletterAnonKey);
 
+// Admin Client (Bypasses RLS - Server Side Only)
+// Used for: API routes that need write access (like launch waitlist)
+// WARNING: Never import this in client-side components!
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+export const supabaseAdmin = serviceRoleKey 
+  ? createClient(newsletterUrl, serviceRoleKey)
+  : null;
+
 // Community Blogs Client (community-blogs project)
 // Used for: Blog submission form on /spotlights/community-blogs
 const communityBlogsUrl = process.env.NEXT_PUBLIC_COMMUNITY_BLOGS_URL!;
