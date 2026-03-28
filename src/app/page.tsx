@@ -134,7 +134,7 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
           >
             {/* Youtube/Primary Button */}
-            <a href="https://www.youtube.com/@Ground_ZeroYT" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.youtube.com/@GroundZeroAI" target="_blank" rel="noopener noreferrer">
               <motion.button
                 className="relative flex items-center justify-center h-10 md:h-12 w-max px-[22px] md:px-6 gap-2.5 md:gap-4 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
                 whileHover={{
