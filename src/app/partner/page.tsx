@@ -14,7 +14,7 @@ const meteorTimings = Array.from({ length: 20 }, () => ({
 
 export default function Partner() {
   const [copied, setCopied] = useState(false);
-  const email = 'ground0ai.lab@gmail.com';
+  const email = 'himanshu@groundzeroai.in';
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
