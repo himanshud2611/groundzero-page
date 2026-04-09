@@ -49,41 +49,6 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-4 md:gap-5">
-            {/* Launch Soon Card */}
-            <Link href="/launch-soon">
-              <motion.div
-                className="relative flex items-center justify-center px-6 md:px-8 py-3 md:py-3.5 bg-white/57 backdrop-blur-lg rounded-full border border-[#f4d37a] shadow-[0_0_18px_rgba(244,211,122,0.45),0_10px_30px_rgba(0,0,0,0.25)] cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 0 24px rgba(244,211,122,0.7), 0 12px 32px rgba(0,0,0,0.3)',
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* NEW Badge */}
-                <motion.span
-                  className="absolute -top-1.5 -right-1.5 md:-top-2 md:-right-2 px-2 py-0.5 bg-red-600 text-white font-mono font-bold text-[10px] md:text-[11px] rounded-full tracking-wide"
-                  animate={{
-                    opacity: [1, 0.6, 1],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                >
-                  NEW
-                </motion.span>
-                <span className="font-mono font-semibold text-[16px] md:text-[18px] text-[#5e3535] tracking-[-0.8px] md:tracking-tight">
-                  LAUNCH SOON →
-                </span>
-              </motion.div>
-            </Link>
-
             {/* Signals Card */}
             <Link href="/signals">
               <motion.div
@@ -239,6 +204,28 @@ export default function Home() {
                 <Image
                   src="/instagram-logo.svg"
                   alt="Instagram"
+                  width={22}
+                  height={22}
+                  className="relative object-contain opacity-80 md:size-6"
+                />
+              </motion.button>
+            </a>
+
+            {/* LinkedIn Button */}
+            <a href="https://www.linkedin.com/company/ground-zero-ai/" target="_blank" rel="noopener noreferrer">
+              <motion.button
+                className="relative flex items-center justify-center h-10 md:h-12 w-[42px] md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
+                whileHover={{
+                  scale: 1.01,
+                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/linkedin-logo.svg"
+                  alt="LinkedIn"
                   width={22}
                   height={22}
                   className="relative object-contain opacity-80 md:size-6"
