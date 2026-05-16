@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Gupter, Chivo_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import NewsletterPopup from "@/components/NewsletterPopup";
 import "./globals.css";
 
-const gupter = Gupter({
+const gupter = localFont({
+  src: [
+    { path: "../fonts/Gupter-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/Gupter-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/Gupter-Bold.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-gupter",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  display: "swap",
 });
 
-const chivoMono = Chivo_Mono({
+const chivoMono = localFont({
+  src: [
+    { path: "../fonts/ChivoMono-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/ChivoMono-Medium.woff2", weight: "500", style: "normal" },
+  ],
   variable: "--font-chivo-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

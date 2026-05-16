@@ -145,28 +145,6 @@ export default function Home() {
               </motion.button>
             </a>
 
-            {/* Discord Button */}
-            <a href="https://discord.gg/aChCV3cbyn" target="_blank" rel="noopener noreferrer">
-              <motion.button
-                className="relative flex items-center justify-center h-10 md:h-12 w-11 md:w-17 bg-white/57 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.25)] cursor-pointer"
-                whileHover={{
-                  scale: 1.01,
-                  backgroundColor: 'rgba(255, 255, 255, 0.65)',
-                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.3), inset 0px 4px 4px 0px rgba(255,255,255,0.35)',
-                }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-              >
-                <Image
-                  src="/discord-logo.svg"
-                  alt="Discord"
-                  width={24}
-                  height={24}
-                  className="relative object-contain opacity-80 md:w-8 md:h-8"
-                />
-              </motion.button>
-            </a>
-
             {/* Instagram Button */}
             <a href="https://instagram.com/groundzero_ig" target="_blank" rel="noopener noreferrer">
               <motion.button

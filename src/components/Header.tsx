@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const navItems = [
-  { label: 'Signals', href: '/signals' },
   { label: 'Podcasts', href: '/podcasts' },
   { label: 'Spotlights', href: '/spotlights' },
   { label: 'Partner', href: '/partner' },
