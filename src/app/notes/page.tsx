@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import BackgroundNoise from "@/components/common/BackgroundNoise";
 import LightsBackground from "@/components/common/LightsBackground";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { fadeInUp, fadeInUpDelayed } from "@/lib/animations";
 
 const notes = [
@@ -43,12 +44,36 @@ export default function Notes() {
                     className="relative z-10 w-full max-w-3xl mx-auto"
                     {...fadeInUp}
                 >
-                    <motion.h1
-                        className="font-serif font-normal text-[32px] md:text-[40px] leading-none tracking-[-0.4px] text-white text-center mb-12 md:mb-16"
-                        {...fadeInUpDelayed(0.2)}
-                    >
-                        Notes from the Podcasts
-                    </motion.h1>
+                    <div className="flex flex-col items-center gap-4 mb-8 md:mb-10">
+                        <motion.h1
+                            className="font-serif font-normal text-[32px] md:text-[40px] leading-none tracking-[-0.4px] text-white text-center"
+                            {...fadeInUpDelayed(0.2)}
+                        >
+                            Notes from the Podcasts
+                        </motion.h1>
+                        <motion.a
+                            href="https://groundzero1.substack.com/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative inline-flex items-center justify-center h-10 md:h-12 px-5 md:px-6 gap-2 md:gap-3 bg-white/10 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                            whileHover={{ scale: 1.01, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            <Image
+                                src="/substack-icon.svg"
+                                alt="Substack"
+                                width={20}
+                                height={20}
+                                className="w-[16px] h-[16px] md:w-5 md:h-5 opacity-90"
+                            />
+                            <span className="relative font-mono font-medium text-sm md:text-base text-white/90 tracking-tight">
+                                View Substack
+                            </span>
+                        </motion.a>
+                    </div>
 
                     <motion.div
                         className="divide-y divide-white/10"

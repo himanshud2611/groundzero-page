@@ -124,28 +124,59 @@ export default function Podcasts() {
             >
               Deep tech interesting conversations with amazing researchers, hackers and founders in AI
             </motion.p>
-            <motion.a
-              href={`https://www.youtube.com/playlist?list=${PLAYLIST_ID}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 relative inline-flex items-center justify-center h-10 md:h-12 px-5 md:px-6 gap-2 md:gap-3 bg-white/10 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+            <motion.div
+              className="mt-4 flex items-center gap-3"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{
-                scale: 1.01,
-                backgroundColor: 'rgba(255, 255, 255, 0.15)',
-              }}
-              whileTap={{ scale: 0.98 }}
             >
-              <svg className="relative w-[18px] h-[18px] md:w-6 md:h-6" viewBox="0 0 24 24">
-                <path fill="#FF3333" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-                <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-              </svg>
-              <span className="relative font-mono font-medium text-sm md:text-base text-white/90 tracking-tight">
-                View Playlist
-              </span>
-            </motion.a>
+              <motion.a
+                href={`https://www.youtube.com/playlist?list=${PLAYLIST_ID}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex items-center justify-center h-10 md:h-12 px-5 md:px-6 gap-2 md:gap-3 bg-white/10 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+                whileHover={{ scale: 1.01, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <svg className="relative w-[18px] h-[18px] md:w-6 md:h-6" viewBox="0 0 24 24">
+                  <path fill="#FF3333" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+                  <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span className="relative font-mono font-medium text-sm md:text-base text-white/90 tracking-tight">
+                  View Playlist
+                </span>
+              </motion.a>
+
+              <motion.a
+                href="https://open.spotify.com/show/2x5gh4HfayziVzKrBefzjt?si=effc3ae6c0024e57"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex items-center justify-center h-10 w-10 md:h-12 md:w-12 bg-white/10 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+                whileHover={{ scale: 1.01, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <svg className="w-[18px] h-[18px] md:w-6 md:h-6" viewBox="0 0 496 512" fill="#1ED760">
+                  <path d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+                </svg>
+              </motion.a>
+
+              <motion.a
+                href="https://podcasts.apple.com/in/podcast/groundzero-ai-talks/id1896715519"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative inline-flex items-center justify-center h-10 w-10 md:h-12 md:w-12 bg-white/10 backdrop-blur-lg rounded-full overflow-hidden shadow-[inset_0px_4px_4px_0px_rgba(255,255,255,0.1)] cursor-pointer"
+                whileHover={{ scale: 1.01, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Image
+                  src="/apple-podcasts-icon.svg"
+                  alt="Apple Podcasts"
+                  width={24}
+                  height={24}
+                  className="w-[18px] h-[18px] md:w-6 md:h-6"
+                />
+              </motion.a>
+            </motion.div>
           </div>
 
           {/* Loading State */}
